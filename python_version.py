@@ -1,2 +1,2 @@
 import sys
-print("".join(sys.version_info[:2]))
+print("".join(str(i) for i in sys.version_info[:2]))
