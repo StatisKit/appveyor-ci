@@ -4,6 +4,8 @@ if "%PLATFORM%"=="x32" set PATH=C:\Miniconda;C:\Miniconda\Scripts;%PATH%
 if "%PLATFORM%"=="x64" set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;%PATH%
 if %errorlevel% neq 0 exit /b %errorlevel%
 
+conda config --set always_yes yes --set changeps1 no
+if %errorlevel% neq 0 exit /b %errorlevel%
 conda update -q conda
 if %errorlevel% neq 0 exit /b %errorlevel%
 conda info -a
