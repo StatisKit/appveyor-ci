@@ -12,6 +12,8 @@ conda info -a
 if %errorlevel% neq 0 exit /b %errorlevel%
 conda install conda-build=1.21
 if %errorlevel% neq 0 exit /b %errorlevel%
+conda install anaconda-client
+if %errorlevel% neq 0 exit /b %errorlevel%
 
 for /f %%i in ('python python_version.py') DO (set PYTHON_VERSION=%%i)
 if %errorlevel% neq 0 exit /b %errorlevel%
