@@ -10,7 +10,7 @@ conda update -q conda
 if %errorlevel% neq 0 exit /b %errorlevel%
 conda info -a
 if %errorlevel% neq 0 exit /b %errorlevel%
-conda install conda-build=1.21
+conda install conda-build=2.0.2
 if %errorlevel% neq 0 exit /b %errorlevel%
 conda install anaconda-client
 if %errorlevel% neq 0 exit /b %errorlevel%
