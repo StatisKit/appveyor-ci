@@ -1,7 +1,12 @@
 echo ON
 
-if "%PLATFORM%"=="x32" set PATH=C:\Miniconda;C:\Miniconda\Scripts;%PATH%
-if "%PLATFORM%"=="x64" set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;%PATH%
+if "%PLATFORM%"=="x32" if "%MINICONDA%"=="2" set PATH=C:\Miniconda;C:\Miniconda\Scripts;%PATH%
+if %errorlevel% neq 0 exit /b %errorlevel%
+if "%PLATFORM%"=="x32" if "%MINICONDA%"=="3" set PATH=C:\Miniconda3;C:\Miniconda3\Scripts;%PATH%
+if %errorlevel% neq 0 exit /b %errorlevel%
+if "%PLATFORM%"=="x64" if "%MINICONDA%"=="2" set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;%PATH%
+if %errorlevel% neq 0 exit /b %errorlevel%
+if "%PLATFORM%"=="x64" if "%MINICONDA%"=="3" set PATH=C:\Miniconda3-x64;C:\Miniconda3-x64\Scripts;%PATH%
 if %errorlevel% neq 0 exit /b %errorlevel%
 
 conda config --set always_yes yes --set changeps1 no
