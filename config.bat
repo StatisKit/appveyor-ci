@@ -8,6 +8,8 @@ if "%PLATFORM%"=="x64" if "%MINICONDA%"=="2" set PATH=C:\Miniconda-x64;C:\Minico
 if %errorlevel% neq 0 exit /b %errorlevel%
 if "%PLATFORM%"=="x64" if "%MINICONDA%"=="3" set PATH=C:\Miniconda3-x64;C:\Miniconda3-x64\Scripts;%PATH%
 if %errorlevel% neq 0 exit /b %errorlevel%
+if "%MINICONDA%"=="3" conda install python=3.5
+if %errorlevel% neq 0 exit /b %errorlevel%
 
 conda config --set always_yes yes --set changeps1 no
 if %errorlevel% neq 0 exit /b %errorlevel%
