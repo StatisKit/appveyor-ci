@@ -1,5 +1,6 @@
 echo ON
 
+if "%MINICONDA%"=="" set MINICONDA="2"
 if "%PLATFORM%"=="x32" if "%MINICONDA%"=="2" set PATH=C:\Miniconda;C:\Miniconda\Scripts;%PATH%
 if %errorlevel% neq 0 exit /b %errorlevel%
 if "%PLATFORM%"=="x32" if "%MINICONDA%"=="3" set PATH=C:\Miniconda3;C:\Miniconda3\Scripts;%PATH%
