@@ -22,7 +22,7 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 
 for /f %%i in ('python python_version.py') DO (set PYTHON_VERSION=%%i)
 if %errorlevel% neq 0 exit /b %errorlevel%
-if "%MINICONDA%"=="3" if "%PYTHON_VERSION%"=="3.4" conda install python=3.5
+if "%MINICONDA%"=="3" if "%PYTHON_VERSION%"=="34" conda install python=3.5
 if %errorlevel% neq 0 exit /b %errorlevel%
 
 set CMD_IN_ENV=cmd /E:ON /V:ON /C %cd%\\cmd_in_env.cmd
