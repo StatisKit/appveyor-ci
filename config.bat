@@ -20,6 +20,17 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 
 conda config --set always_yes yes --set changeps1 no
 if %errorlevel% neq 0 exit /b %errorlevel%
+if not "%CONDA_CACHE_DIR%"=="" ]] (
+  echo "conda-build:" >> %USERPROFILE%\.condarc
+  if %errorlevel% neq 0 exit /b %errorlevel%
+  echo "  root-dir: " %CONDA_CACHE_DIR% >> %USERPROFILE%\.condarc;
+  if %errorlevel% neq 0 exit /b %errorlevel%
+  if not exist %CONDA_CACHE_DIR%/%APPVEYOR_JOB_ID% (
+    rmdir %CONDA_CACHE_DIR /s /Q
+    mkdir %CONDA_CACHE_DIR%
+    touch %CONDA_CACHE_DIR%/%APPVEYOR_JOB_ID%
+  )
+)
 conda update -q conda
 if %errorlevel% neq 0 exit /b %errorlevel%
 for /f %%i in ('python python_version.py') DO (set PYTHON_VERSION=%%i)
