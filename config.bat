@@ -20,7 +20,7 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 
 conda config --set always_yes yes --set changeps1 no
 if %errorlevel% neq 0 exit /b %errorlevel%
-if not "%CONDA_CACHE_DIR%"=="" ]] (
+if not "%CONDA_CACHE_DIR%"=="" (
   echo "conda-build:" >> %USERPROFILE%\.condarc
   if %errorlevel% neq 0 exit /b %errorlevel%
   echo "  root-dir: " %CONDA_CACHE_DIR% >> %USERPROFILE%\.condarc;
