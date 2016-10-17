@@ -25,10 +25,10 @@ if not "%CONDA_CACHE_DIR%"=="" (
   if %errorlevel% neq 0 exit /b %errorlevel%
   echo "  root-dir: " %CONDA_CACHE_DIR% >> %USERPROFILE%\.condarc;
   if %errorlevel% neq 0 exit /b %errorlevel%
-  if not exist %CONDA_CACHE_DIR%/%APPVEYOR_JOB_ID% (
+  if not exist %CONDA_CACHE_DIR%\%APPVEYOR_JOB_ID% (
     rmdir %CONDA_CACHE_DIR /s /Q
     mkdir %CONDA_CACHE_DIR%
-    touch %CONDA_CACHE_DIR%/%APPVEYOR_JOB_ID%
+    type nul > %CONDA_CACHE_DIR%\%APPVEYOR_JOB_ID%
   )
 )
 conda update -q conda
