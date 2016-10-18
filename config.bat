@@ -20,16 +20,6 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 
 conda config --set always_yes yes --set changeps1 no
 if %errorlevel% neq 0 exit /b %errorlevel%
-echo "%CONDA_CACHE_DIR%"
-if "%CONDA_CACHE_DIR%" neq "" (
-  if not exist %CONDA_CACHE_DIR% mkdir %CONDA_CACHE_DIR%
-  if %errorlevel% neq 0 exit /b %errorlevel%
-  echo conda-build: >> %USERPROFILE%\.condarc
-  if %errorlevel% neq 0 exit /b %errorlevel%
-  echo   root-dir: %CONDA_CACHE_DIR% >> %USERPROFILE%\.condarc
-  if %errorlevel% neq 0 exit /b %errorlevel%
-  more  %USERPROFILE%\.condarc
-)
 conda update -q conda
 if %errorlevel% neq 0 exit /b %errorlevel%
 for /f %%i in ('python python_version.py') DO (set PYTHON_VERSION=%%i)
