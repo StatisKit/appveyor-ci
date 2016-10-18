@@ -44,6 +44,7 @@ if "%MINICONDA%"=="3" conda install conda-build=2.0.2
 if %errorlevel% neq 0 exit /b %errorlevel%
 conda install anaconda-client
 if %errorlevel% neq 0 exit /b %errorlevel%
+if not "%CONDA_CACHE_DIR%"=="" conda install perl
 
 set CMD_IN_ENV=cmd /E:ON /V:ON /C %cd%\\cmd_in_env.cmd
 if %errorlevel% neq 0 exit /b %errorlevel%
