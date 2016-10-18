@@ -20,6 +20,7 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 
 conda config --set always_yes yes --set changeps1 no
 if %errorlevel% neq 0 exit /b %errorlevel%
+echo %CONDA_CACHE_DIR%
 if not "%CONDA_CACHE_DIR%"=="" (
   if not exist %CONDA_CACHE_DIR% mkdir %CONDA_CACHE_DIR%
   if %errorlevel% neq 0 exit /b %errorlevel%
