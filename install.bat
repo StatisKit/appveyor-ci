@@ -1,6 +1,6 @@
 echo ON
 
-if "%MINICONDA%"=="" set MINICONDA="2"
+if "%MINICONDA%"=="" set MINICONDA=2
 
 rmdir %SystemDrive%\miniconda /s /Q
 
