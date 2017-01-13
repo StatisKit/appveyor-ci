@@ -33,3 +33,5 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 
 set CMD_IN_ENV=cmd /E:ON /V:ON /C %cd%\\cmd_in_env.cmd
 if %errorlevel% neq 0 exit /b %errorlevel%
+
+echo OFF
