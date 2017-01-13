@@ -11,6 +11,6 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 
 echo ON
 
-set 
+setx ANACONDA_DEPLOY %ANACONDA_DEPLOY%
 
 echo OFF
