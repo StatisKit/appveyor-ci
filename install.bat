@@ -12,7 +12,7 @@ if "%PLATFORM%"=="x64" if "%MINICONDA%"=="2" curl https://repo.continuum.io/mini
 if %errorlevel% neq 0 exit /b %errorlevel%
 if "%PLATFORM%"=="x64" if "%MINICONDA%"=="3" curl https://repo.continuum.io/miniconda/Miniconda3-latest-Windows-x86_64.exe -o miniconda.exe
 if %errorlevel% neq 0 exit /b %errorlevel%
-dir
+
 start /wait "" miniconda.exe /InstallationType=JustMe /RegisterPython=0 /S /D=%SystemDrive%\miniconda
 if %errorlevel% neq 0 exit /b %errorlevel%
 set PATH=%SystemDrive%\miniconda;%SystemDrive%\miniconda\Scripts;%PATH%
