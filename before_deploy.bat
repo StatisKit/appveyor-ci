@@ -9,4 +9,8 @@ if "%RECIPE%"=="" set ANACONDA_DEPLOY=false
 if "!ANACONDA_DEPLOY!"=="true" echo y|anaconda login --password %ANACONDA_PASSWORD% --username %ANACONDA_USERNAME%
 if %errorlevel% neq 0 exit /b %errorlevel%
 
+echo ON
+
+set 
+
 echo OFF
