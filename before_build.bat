@@ -6,7 +6,7 @@ if not "%RECIPE%"=="" (
 		git apply -v conda\%RECIPE%\appveyor-ci.patch
 		if errorlevel neq 0 exit /b 1
 		cd appveyor-ci
-		dir ../test
+		dir ..\test
 	)
 )
 
