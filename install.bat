@@ -1,7 +1,7 @@
 echo ON
 
 set BATCH_MODE=true
-set ENVIRONMENT=false
+set CONFIGURE_ONLY=true
 curl https://raw.githubusercontent.com/StatisKit/StatisKit/master/doc/developer/developer_install.bat -o developer_install.bat
 if errorlevel 1 exit 1
 call developer_install.bat
