@@ -2,7 +2,7 @@ echo ON
 
 set BATCH_MODE=true
 set CONFIGURE_ONLY=true
-set CONDA_DIR=%HOMEDRIVE%\
+set CONDA_DIR=%HOMEDRIVE%\Conda
 curl https://raw.githubusercontent.com/StatisKit/StatisKit/master/doc/developer/developer_install.bat -o developer_install.bat
 if errorlevel 1 exit 1
 call developer_install.bat
