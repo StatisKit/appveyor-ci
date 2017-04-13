@@ -1,4 +1,4 @@
-echo OFF
+echo ON
 
 git clone https://github.com/StatisKit/StatisKit.git
 if exist StatisKit\doc\win_%INSTALL% (
