@@ -15,7 +15,7 @@ build_script:
   - cd install-scripts
   - pyinstaller %INSTALL%.py --onefile
   - cd dist
-  - if "%INSTALL%" == "developer_install" ]] (
+  - if "%INSTALL%" == "developer_install" (
       ./$INSTALL --configure-only=yes --batch-mode=yes
     ) else (
       ./$INSTALL --batch-mode=yes;
