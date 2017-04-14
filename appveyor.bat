@@ -1,15 +1,15 @@
 echo OFF
-dir .
+
 git clone https://github.com/StatisKit/StatisKit.git
-if exist StatisKit\doc\win_%INSTALL% (
-  del StatisKit\doc\win_%INSTALL%
+if exist StatisKit\doc\win_%INSTALL%.exe (
+  del StatisKit\doc\win_%INSTALL%.exe
 )
-move $INSTALL StatisKit\doc\win_%INSTALL%
+move $INSTALL.exe StatisKit\doc\win_%INSTALL%.exe
 cd StatisKit
 git config --global user.email %GIT_EMAIL%
 git config --global user.name %GIT_NAME%
-git add doc\win_%INSTALL%
-git commit -a -m "Update "win_%INSTALL%" script"
+git add doc\win_%INSTALL%.exe
+git commit -a -m "Update "win_%INSTALL%".exe script"
 echo machine github.com >>  %USERPROFILE%\_netrc
 echo login %GITHUB_USERNAME% >> %USERPROFILE%\_netrc
 echo password %GITHUB_PASSWORD% >>  %USERPROFILE%\_netrc
