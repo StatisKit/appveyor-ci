@@ -16,8 +16,8 @@ build_script:
   - pyinstaller %INSTALL%.py --onefile
   - cd dist
   - if "%INSTALL%" == "developer_install" (
-      ./$INSTALL --configure-only=yes --batch-mode=yes
+      $INSTALL --configure-only=yes --batch-mode=yes
     ) else (
-      ./$INSTALL --batch-mode=yes;
+      $INSTALL --batch-mode=yes
     )
   - call  ..\..\appveyor.bat
