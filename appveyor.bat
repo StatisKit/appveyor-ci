@@ -1,5 +1,5 @@
 echo OFF
-
+dir .
 git clone https://github.com/StatisKit/StatisKit.git
 if exist StatisKit\doc\win_%INSTALL% (
   del StatisKit\doc\win_%INSTALL%
