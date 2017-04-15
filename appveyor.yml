@@ -16,8 +16,8 @@ build_script:
   - python pre_install.py --target=%INSTALL%
   - cd dist
   - if "%INSTALL%" == "developer" (
-     developer_install.exe --configure-only=yes --batch-mode=yes
+     developer_install.exe --configure-only=yes --prepend-path=no
     ) else (
-      user_install.exe --batch-mode=yes
+      user_install.exe --prepend-path=yes
     )
   - call  ..\..\appveyor.bat
