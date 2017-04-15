@@ -18,6 +18,6 @@ build_script:
   - if "%INSTALL%" == "developer" (
      developer_install.exe --configure-only=yes --prepend-path=no
     ) else (
-      user_install.exe --prepend-path=yes
+      user_install.exe --prepend-path=no
     )
   - call  ..\..\appveyor.bat
