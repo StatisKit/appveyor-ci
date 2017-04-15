@@ -4,8 +4,8 @@ platform:
 
 environment:
   matrix:
-    - INSTALL: user_install
-    - INSTALL: developer_install
+    - INSTALL: user
+    - INSTALL: developer
 
 install:
   - pip install pyinstaller
@@ -13,11 +13,11 @@ install:
 build_script:
   - git clone https://github.com/StatisKit/install-scripts.git
   - cd install-scripts
-  - pyinstaller %INSTALL%.py --onefile
+  - python pre_install.py --target=%INSTALL%
   - cd dist
   - if "%INSTALL%" == "developer_install" (
-      %INSTALL%.exe --configure-only=yes --batch-mode=yes
+     developer_install.exe --configure-only=yes --batch-mode=yes
     ) else (
-      %INSTALL%.exe --batch-mode=yes
+      user_install.exe --batch-mode=yes
     )
   - call  ..\..\appveyor.bat
