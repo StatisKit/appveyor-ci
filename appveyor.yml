@@ -15,7 +15,7 @@ build_script:
   - cd install-scripts
   - python pre_install.py --target=%INSTALL%
   - cd dist
-  - if "%INSTALL%" == "developer_install" (
+  - if "%INSTALL%" == "developer" (
      developer_install.exe --configure-only=yes --batch-mode=yes
     ) else (
       user_install.exe --batch-mode=yes
