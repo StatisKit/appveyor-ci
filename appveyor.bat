@@ -16,7 +16,6 @@ move %INSTALL%_install.exe StatisKit\doc\win\%WIN%\%INSTALL%_install.exe
 cd StatisKit
 git config --global user.email %GIT_EMAIL%
 git config --global user.name %GIT_NAME%
-dir doc
 git add doc\win\%WIN%\%INSTALL%_install.exe
 git commit -a -m "Update win/"%WIN%"/"%INSTALL%"_install.exe script"
 echo machine github.com >>  %USERPROFILE%\_netrc
