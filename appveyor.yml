@@ -1,5 +1,5 @@
 platform:
-  #- x86
+  - x86
   - x64
 
 environment:
@@ -9,8 +9,6 @@ environment:
 
 install:
   - if "%PLATFORM%" == "x64" set VERSION=-%PLATFORM%
-  - dir C:\Miniconda%VERSION%
-  - dir C:\Miniconda%VERSION%\Scripts
   - set PATH=C:\Miniconda%VERSION%;C:\Miniconda%VERSION%\Scripts;%PATH%
   - echo %PATH%
   - activate root
