@@ -8,7 +8,7 @@ environment:
     - INSTALL: developer
 
 install:
-  - if "%PLATFORM%" == "x86% (
+  - if "%PLATFORM%" == "x86" (
       set VERSION=
     ) else (
       set VERSION=%PLATFORM%
