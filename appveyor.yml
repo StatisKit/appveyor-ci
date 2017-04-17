@@ -8,9 +8,7 @@ environment:
     - INSTALL: developer
 
 install:
-  - if "%PLATFORM%" == "x86" (
-      set VERSION=
-    ) else (
+  - if "%PLATFORM%" == "x64" (
       set VERSION=%PLATFORM%
     )
   - set PATH=C:\Miniconda%VERSION%;C:\Miniconda%VERSION%\Scripts;%PATH%
