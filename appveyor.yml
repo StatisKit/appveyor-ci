@@ -16,8 +16,8 @@ build_script:
   - python pre_install.py --target=%INSTALL%
   - cd dist
   - if "%INSTALL%" == "developer" (
-     developer_install.exe --configure-only=yes --prepend-path=no
+     developer_install.exe --configure-only=yes --prepend-path=no --prefix=%HOMEDRIVE%\MinicondaSTK
     ) else (
-      user_install.exe --prepend-path=no
+      user_install.exe --prepend-path=no --prefix=%HOMEDRIVE%\MinicondaSTK
     )
   - call  ..\..\appveyor.bat
