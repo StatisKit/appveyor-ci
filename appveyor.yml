@@ -1,5 +1,5 @@
 platform:
-  - x86
+  #- x86
   - x64
 
 environment:
@@ -12,6 +12,7 @@ install:
       set VERSION=-%PLATFORM%
     )
   - set PATH=C:\Miniconda%VERSION%;C:\Miniconda%VERSION%\Scripts;%PATH%
+  - echo %PATH%
   - activate root
   - pip install pyinstaller
   
