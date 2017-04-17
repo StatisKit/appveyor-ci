@@ -8,8 +8,8 @@ environment:
     - INSTALL: developer
 
 install:
-  # - if "%PLATFORM%" == "x64" set VERSION=-%PLATFORM%
-  # - set PATH=C:\Python27%VERSION%;C:\Python27%VERSION%\Scripts;%PATH%
+  - if "%PLATFORM%" == "x64" set VERSION=-%PLATFORM%
+  - set PATH=C:\Python27%VERSION%;C:\Python27%VERSION%\Scripts;%PATH%
   - pip install pyinstaller
   
 build_script:
