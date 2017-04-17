@@ -8,8 +8,15 @@ environment:
     - INSTALL: developer
 
 install:
+  - if "%PLATFORM%" == "x86% (
+      set VERSION=
+    ) else (
+      set VERSION=%PLATFORM%
+    )
+  - set PATH=C:\Miniconda%VERSION%;C:\Miniconda%VERSION%\Scripts;%PATH%
+  - activate root
   - pip install pyinstaller
-
+  
 build_script:
   - git clone https://github.com/StatisKit/install-scripts.git
   - cd install-scripts
