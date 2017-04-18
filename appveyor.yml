@@ -10,8 +10,7 @@ environment:
 install:
   - if "%PLATFORM%" == "x64" set VERSION=-%PLATFORM%
   - set PATH=C:\Python27%VERSION%;C:\Python27%VERSION%\Scripts;%PATH%
-  - set CMD_IN_ENV=cmd /E:ON /V:ON /C %cd%\\cmd_in_env.cmd
-  - %CMD_IN_ENV% pip install pyinstaller
+  - pip install pyinstaller
   
 build_script:
   - git clone https://github.com/StatisKit/install-scripts.git
