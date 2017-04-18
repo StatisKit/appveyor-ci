@@ -8,14 +8,15 @@ environment:
     - INSTALL: developer
 
 install:
-  - if "%PLATFORM%" == "x64" set VERSION=-%PLATFORM%
-  - set PATH=C:\Python27%VERSION%;C:\Python27%VERSION%\Scripts;%PATH%
+  - if "%PLATFORM%" == "x64" set ARCH=64
+  - if "%PLATFORM%" == "x86" set ARCH=32
+  # - set PATH=C:\Python27%VERSION%;C:\Python27%VERSION%\Scripts;%PATH%
   - pip install pyinstaller
   
 build_script:
   - git clone https://github.com/StatisKit/install-scripts.git
   - cd install-scripts
-  - python pre_install.py --target=%INSTALL%
+  - python pre_install.py --target=%INSTALL% --arch=%ARCH%
   - cd dist
   - if "%INSTALL%" == "developer" (
      developer_install.exe --configure-only=yes --prepend-path=no --prefix=%HOMEDRIVE%\MinicondaSTK
