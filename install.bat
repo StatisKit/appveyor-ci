@@ -7,7 +7,7 @@ if "%PLATFORM%" == "x86" (
 )
 curl https://raw.githubusercontent.com/StatisKit/StatisKit/master/doc/win/%ARCH%/developer_install.exe -o developer_install.exe
 if errorlevel 1 exit 1
-developer_install.exe --prepend-path=no --configure-only=yes --prefix=%HOMEDRIVE\MinicondaSTK
+developer_install.exe --prepend-path=no --configure-only=yes --prefix=%HOMEDRIVE%\MinicondaSTK
 if errorlevel 1 exit 1
 del developer_install.exe
 if errorlevel 1 exit 1
