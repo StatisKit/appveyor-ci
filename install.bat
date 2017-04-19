@@ -22,7 +22,4 @@ if errorlevel 1 exit 1
 set CMD_IN_ENV=cmd /E:ON /V:ON /C %cd%\\cmd_in_env.cmd
 if errorlevel 1 exit 1
 
-set TEST_LEVEL=1
-if errorlevel 1 exit 1
-
 echo OFF
