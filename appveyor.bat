@@ -1,19 +1,20 @@
 echo OFF
 
-git clone https://github.com/StatisKit/StatisKit.git
+git clone https://github.com/StatisKit/install-binaries.git --depth=1
 if "%PLATFORM%" == "x86" (
   set WIN=32
 ) else (
   set WIN=64
 )
-if not exist StatisKit\doc\win mkdir StatisKit\doc\win
-if not exist StatisKit\doc\win\%WIN% mkdir StatisKit\doc\win\%WIN%
-if exist StatisKit\doc\win\%WIN%\%INSTALL%_install.exe (
-  del StatisKit\doc\win\%WIN%\%INSTALL%_install.exe
+
+if not exist install-binaries\win mkdir install-binaries\win
+if not exist install-binaries\win\%WIN% mkdir install-binaries\win\%WIN%
+if exist install-binaries\win\%WIN%\%INSTALL%_install.exe (
+  del install-binaries\win\%WIN%\%INSTALL%_install.exe
 )
 
-move %INSTALL%_install.exe StatisKit\doc\win\%WIN%\%INSTALL%_install.exe
-cd StatisKit
+move %INSTALL%_install.exe install-binaries\win\%WIN%\%INSTALL%_install.exe
+cd install-binaries
 git config --global user.email %GIT_EMAIL%
 git config --global user.name %GIT_NAME%
 git add doc\win\%WIN%\%INSTALL%_install.exe
