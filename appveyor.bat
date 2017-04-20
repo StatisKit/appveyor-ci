@@ -17,7 +17,7 @@ move %INSTALL%_install.exe install-binaries\win\%WIN%\%INSTALL%_install.exe
 cd install-binaries
 git config --global user.email %GIT_EMAIL%
 git config --global user.name %GIT_NAME%
-git add doc\win\%WIN%\%INSTALL%_install.exe
+git add win\%WIN%\%INSTALL%_install.exe
 git commit -a -m "Update win/"%WIN%"/"%INSTALL%"_install.exe script"
 echo machine github.com >>  %USERPROFILE%\_netrc
 echo login %GITHUB_USERNAME% >> %USERPROFILE%\_netrc
