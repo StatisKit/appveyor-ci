@@ -7,7 +7,7 @@ if "%PLATFORM%" == "x86" (
 )
 rmdir /s /q C:\Miniconda
 if errorlevel 1 exit 1
-curl https://raw.githubusercontent.com/StatisKit/StatisKit/master/doc/win/%ARCH%/developer_install.exe -o developer_install.exe
+curl https://raw.githubusercontent.com/StatisKit/install-binaries/master/win/%ARCH%/developer_install.exe -o developer_install.exe
 if errorlevel 1 exit 1
 developer_install.exe --prepend-path=no --configure-only=yes --prefix=%HOMEDRIVE%\Miniconda
 if errorlevel 1 exit 1
