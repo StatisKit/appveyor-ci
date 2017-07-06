@@ -9,4 +9,10 @@ if not "%RECIPE%"=="" (
 	)
 )
 
+if not "%ENVIRONMENT%"== "" (
+	cd ..
+	conda env create -f environment.yml
+	activate $ENVIRONMENT
+)
+
 echo OFF
