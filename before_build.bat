@@ -1,18 +1,17 @@
 echo ON
 
 if not "%RECIPE%"=="" (
-	if exist ..\conda\%RECIPE%\appveyor-ci.patch (
+	if exist ..\bin\%RECIPE%\appveyor-ci.patch (
 		cd ..
-		git apply -v conda\%RECIPE%\appveyor-ci.patch
+		git apply -v bin\%RECIPE%\appveyor-ci.patch
 		if errorlevel neq 0 exit /b 1
 		cd appveyor-ci
 	)
 )
 
-if not "%ENVIRONMENT%"== "" (
-	cd ..
-	conda env create -f environment.yml
-	activate $ENVIRONMENT
+if not "%CONDA_ENVIRONMENT%"== "" (
+	conda env create -f ..\environment.yml
+	activate $CONDA_ENVIRONMENT
 )
 
 echo OFF
