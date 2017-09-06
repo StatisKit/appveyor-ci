@@ -1,5 +1,16 @@
 echo ON
 
+if "%PYTHON_VERSION%" == "" (
+  set PYTHON_VERSION=2
+)
+
+if "%PYTHON_VERSION%" == "2" (
+  set PYTHON_VERSION=2.7
+) 
+if "%PYTHON_VERSION%" == "3" (
+  set PYTHON_VERSION=3.6
+)
+
 if "%PLATFORM%" == "x86" (
   set ARCH=32
 ) else (
