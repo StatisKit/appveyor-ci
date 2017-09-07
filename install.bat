@@ -20,8 +20,8 @@ if errorlevel 1 exit 1
 set PATH=%HOMEDRIVE%\Miniconda;%HOMEDRIVE%\Miniconda\Scripts;%PATH%
 if errorlevel 1 exit 1
 
-REM for /f %%i in ('python python_version.py') DO (set PYTHON_VERSION=%%i)
-REM if errorlevel 1 exit 1
+for /f %%i in ('python python_version.py') DO (set PYTHON_VERSION=%%i)
+if errorlevel 1 exit 1
 
 set CMD_IN_ENV=cmd /E:ON /V:ON /C %cd%\\cmd_in_env.cmd
 if errorlevel 1 exit 1
