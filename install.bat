@@ -1,14 +1,7 @@
 echo ON
 
-if "%PYTHON_VERSION%" == "" (
-  set PYTHON_VERSION=2
-)
-
-if "%PYTHON_VERSION%" == "2" (
-  set PYTHON_VERSION=2.7
-) 
-if "%PYTHON_VERSION%" == "3" (
-  set PYTHON_VERSION=3.6
+if "%CONDA_VERSION%" == "" (
+  set CONDA_VERSION=2
 )
 
 if "%PLATFORM%" == "x86" (
@@ -18,7 +11,7 @@ if "%PLATFORM%" == "x86" (
 )
 rmdir /s /q C:\Miniconda
 if errorlevel 1 exit 1
-curl https://raw.githubusercontent.com/StatisKit/install-binaries/master/win/%ARCH%/developer_install.exe -o developer_install.exe
+curl https://raw.githubusercontent.com/StatisKit/install-binaries/master/win/%ARCH%/PY%CONDA_VERSION%/developer_install.exe -o developer_install.exe
 if errorlevel 1 exit 1
 developer_install.exe --prepend-path=no --configure-only=yes --prefix=%HOMEDRIVE%\Miniconda
 if errorlevel 1 exit 1
