@@ -1,4 +1,4 @@
-echo ON
+echo OFF
 
 git clone https://github.com/StatisKit/install-binaries.git --depth=1
 if "%PLATFORM%" == "x86" (
@@ -21,7 +21,6 @@ git config --global user.email %GIT_EMAIL%
 git config --global user.name %GIT_NAME%
 git add win\%WIN%\PY%PYTHON_VERSION%\%INSTALL%_install.exe
 git commit -m "Update win/"%WIN%"/PY"%PYTHON_VERSION%"/"%INSTALL%"_install.exe script"
-echo OFF
 
 echo machine github.com >>  %USERPROFILE%\_netrc
 echo login %GITHUB_USERNAME% >> %USERPROFILE%\_netrc
