@@ -1,3 +1,4 @@
+echo ON
 
 git clone https://github.com/StatisKit/install-binaries.git --depth=1
 if "%PLATFORM%" == "x86" (
