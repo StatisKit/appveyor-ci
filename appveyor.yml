@@ -22,7 +22,7 @@ install:
 build_script:
   - git clone https://github.com/StatisKit/install-scripts.git
   - cd install-scripts
-  - python pre_install.py --target=%INSTALL% --arch=%ARCH%
+  - python pre_install.py --target=%INSTALL% --arch=%ARCH% --version=%PYTHON_VERSION%
   - cd dist
   - if "%INSTALL%" == "developer" (
      developer_install.exe --configure-only=yes --prepend-path=no --prefix=%HOMEDRIVE%\MinicondaSTK
