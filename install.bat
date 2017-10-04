@@ -14,7 +14,6 @@ rmdir /s /q C:\Miniconda
 if errorlevel 1 exit 1
 curl https://repo.continuum.io/miniconda/Miniconda%CONDA_VERSION%-latest-Windows-%ARCH%.exe -o miniconda.exe
 if errorlevel 1 exit 1
-:: powershell Start-Process -FilePath miniconda.exe -ArgumentList /AddToPath=1,/InstallationType=JustMe,/RegisterPython=0,/S,/D=%HOMEDRIVE%\Miniconda -Wait
 miniconda.exe /AddToPath=1 /InstallationType=JustMe /RegisterPython=0 /S /D=%HOMEDRIVE%\Miniconda 
 if errorlevel 1 exit 1
 del miniconda.exe
