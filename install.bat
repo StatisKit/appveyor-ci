@@ -5,7 +5,7 @@ if "%CONDA_VERSION%" == "" (
 )
 
 if "%PLATFORM%" == "x86" (
-  set ARCH=32
+  set ARCH=x86
 ) else (
   set ARCH=x86_64
 )
