@@ -14,13 +14,13 @@ rmdir /s /q C:\Miniconda
 if errorlevel 1 exit 1
 curl https://repo.continuum.io/miniconda/Miniconda%CONDA_VERSION%-latest-Windows-%ARCH%.exe -o miniconda.exe
 if errorlevel 1 exit 1
-powershell Start-Process -FilePath miniconda.exe -ArgumentList /AddToPath=0,/InstallationType=JustMe,/RegisterPython=0,/S,/D=%HOMEDRIVE%\Miniconda -Wait
+powershell Start-Process -FilePath miniconda.exe -ArgumentList /AddToPath=1,/InstallationType=JustMe,/RegisterPython=0,/S,/D=%HOMEDRIVE%\Miniconda -Wait
 if errorlevel 1 exit 1
 del miniconda.exe
 if errorlevel 1 exit 1
 set PATH=%HOMEDRIVE%\Miniconda;%HOMEDRIVE%\Miniconda\Scripts;%PATH%
 if errorlevel 1 exit 1
-%HOMEDRIVE%\Miniconda\Scripts\activate.bat root
+activate root
 if errorlevel 1 exit 1
 conda config --set always_yes yes
 if errorlevel 1 exit 1
