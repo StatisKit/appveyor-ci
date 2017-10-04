@@ -21,7 +21,7 @@ del miniconda.exe
 if errorlevel 1 exit 1
 set PATH=%HOMEDRIVE%\Miniconda;%HOMEDRIVE%\Miniconda\Scripts;%PATH%
 if errorlevel 1 exit 1
-activate root
+call %HOMEDRIVE%\Miniconda\Scripts\activate.bat root
 if errorlevel 1 exit 1
 conda config --set always_yes yes
 if errorlevel 1 exit 1
