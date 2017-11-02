@@ -5,7 +5,7 @@ if not "%JUPYTER_NOTEBOOK%"=="" (
   if not "%CONDA_ENVIRONMENT%"=="" (
     activate %CONDA_ENVIRONMENT%
   )
-  jupyter nbconvert --ExecutePreprocessor.timeout=3600 --to notebook --execute ..\share\jupyter\%JUPYTER_NOTEBOOK% --output %JUPYTER_NOTEBOOK%
+  jupyter nbconvert --ExecutePreprocessor.kernel_name='python'%CONDA_VERSION% --ExecutePreprocessor.timeout=3600 --to notebook --execute ..\share\jupyter\%JUPYTER_NOTEBOOK% --output %JUPYTER_NOTEBOOK%
 )
 if %errorlevel% neq 0 exit /b %errorlevel%
 
