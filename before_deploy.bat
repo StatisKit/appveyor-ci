@@ -9,6 +9,8 @@ if not exist ANACONDA_DEPLOY (
   )
 )
 
+echo !ANACONDA_DEPLOY!
+
 if "!ANACONDA_DEPLOY!"=="true" (
   echo y|anaconda login --password %ANACONDA_PASSWORD% --username %ANACONDA_USERNAME%
   if %errorlevel% neq 0 exit /b %errorlevel%
