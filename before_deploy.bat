@@ -1,5 +1,5 @@
 setlocal EnableDelayedExpansion
-echo OFF
+echo ON
 
 if not exist ANACONDA_DEPLOY (
   if exist CONDA_RECIPE (
