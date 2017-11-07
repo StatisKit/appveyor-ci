@@ -1,10 +1,13 @@
 setlocal EnableDelayedExpansion
 echo OFF
 
-set ANACONDA_DEPLOY=true
-if "%ANACONDA_USERNAME%"=="" set ANACONDA_DEPLOY=false
-if "%ANACONDA_PASSWORD%"=="" set ANACONDA_DEPLOY=false
-if "%CONDA_RECIPE%"=="" set ANACONDA_DEPLOY=false
+if not exist ANACONDA_DEPLOY (
+  if exist CONDA_RECIPE (
+    set ANACONDA_DEPLOY=true
+    if "%ANACONDA_USERNAME%"=="" set ANACONDA_DEPLOY=false
+    if "%ANACONDA_PASSWORD%"=="" set ANACONDA_DEPLOY=false
+  )
+)
 
 if "!ANACONDA_DEPLOY!"=="true" (
   echo y|anaconda login --password %ANACONDA_PASSWORD% --username %ANACONDA_USERNAME%
