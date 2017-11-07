@@ -1,7 +1,7 @@
 appveyor-ci: Tools for Using AppVeyor CI
 ========================================
 
-This collection of scripts for ** AppVeyor CI** can be used with the following :code:`appveyor.yml` file:
+This collection of scripts for **AppVeyor CI** can be used with the following :code:`appveyor.yml` file:
 
 .. code-block:: yaml
 
