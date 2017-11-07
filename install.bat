@@ -4,6 +4,12 @@ if "%CONDA_VERSION%" == "" (
   set CONDA_VERSION=2
 )
 
+if not "%ANACONDA_USERNAME%" == "" (
+  if "%ANACONDA_UPLOAD%" == "" (
+    set ANACONDA_UPLOAD=%ANACONDA_USERNAME%
+  )
+)
+
 if "%PLATFORM%" == "x86" (
   set ARCH=x86
 ) else (
@@ -21,9 +27,13 @@ if errorlevel 1 exit 1
 set PATH=%HOMEDRIVE%\Miniconda;%HOMEDRIVE%\Miniconda\Scripts;%PATH%
 if errorlevel 1 exit 1
 call %HOMEDRIVE%\Miniconda\Scripts\activate.bat root
+if not "%ANACONDA_CHANNELS%"=="" (
+  conda config --add channels %ANACONDA_CHANNELS%
+  if errorlevel 1 exit 1
+)
+call config.bat
 if errorlevel 1 exit 1
-conda config --set always_yes yes
-if errorlevel 1 exit 1
+
 conda update conda
 if errorlevel 1 exit 1
 conda install conda-build anaconda-client
