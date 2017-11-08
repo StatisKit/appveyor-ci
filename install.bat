@@ -18,6 +18,10 @@ if "%ANACONDA_DEPLOY%" == "" (
     )
 )
 
+if "%ANACONDA_LABEL%" == "" (
+    set ANACONDA_LABEL=main
+)
+
 if "%PLATFORM%" == "x86" (
   set ARCH=x86
 ) else (
