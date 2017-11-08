@@ -5,8 +5,8 @@ if not "%CONDA_RECIPE%"=="" (
   if errorlevel 1 exit 1
 )
 
-if not "%JUPYTER_NOTEBOOK%"=="" (
-  if not "%CONDA_ENVIRONMENT%"=="" (
+if not "%JUPYTER_NOTEBOOK%" == "" (
+  if not "%CONDA_ENVIRONMENT%" == "" (
     activate appveyor-ci
     if errorlevel 1 exit 1
   )

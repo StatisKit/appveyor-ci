@@ -69,7 +69,11 @@ If you want to:
   * :code:`ANACONDA_UPLOAD` (optional).
     The channel used to upload the **Conda** recipe built.
     If not given, it is set to the :code:`ANACONDA_USERNAME` value.
-    
+  * :code:`ANACONDA_DEPLOY` (optional).
+    Deployment into the **Anaconda Cloud**.
+    If set to :code:`true` (default if :code:`ANACONDA_USERNAME` is provided), the **Conda** recipe built will be deployed in the **Anaconda Cloud**.
+    If set to :code:`false` (default if :code:`ANACONDA_USERNAME` is not provided), the **Conda** recipe built will not be deployed in the **Anaconda Cloud**.
+
 * Run a **Jupyter** notebook, you should define these environment  variables:
 
   * :code:`JUPYTER_NOTEBOOK`.
@@ -77,7 +81,6 @@ If you want to:
     This path must be relative to the repository root.
   * :code:`CONDA_ENVIRONMENT`.
     The path to the **Conda** environment to use when runnning the **Jupyter** notebook.
-   
     
 .. note::
 

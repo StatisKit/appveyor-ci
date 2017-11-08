@@ -1,6 +1,8 @@
 echo ON
 
-if exist ANACONDA_DEPLOY anaconda logout
-if %errorlevel% neq 0 exit /b %errorlevel%
+if "%ANACONDA_DEPLOY%" == "true" (
+    anaconda logout
+    if errorlevel 1 exit 1
+)
 
 echo OFF

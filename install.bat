@@ -10,6 +10,14 @@ if not "%ANACONDA_USERNAME%" == "" (
   )
 )
 
+if "%ANACONDA_DEPLOY%" == "" (
+    if not "%ANACONDA_USERNAME%" == "" (
+        set ANACONDA_DEPLOY=true
+    ) else (
+        set ANACONDA_DEPLOY=false
+    )
+)
+
 if "%PLATFORM%" == "x86" (
   set ARCH=x86
 ) else (
