@@ -1,5 +1,5 @@
-appveyor-ci: Tools for Using AppVeyor CI
-========================================
+appveyor-ci: Tools for Using Conda in AppVeyor CI
+=================================================
 
 This collection of scripts for **AppVeyor CI** can be used with the following :code:`appveyor.yml` file:
 
