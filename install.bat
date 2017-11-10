@@ -1,7 +1,5 @@
 echo ON
 
-git submodule update --init --recursive
-
 if "%CONDA_VERSION%" == "" (
   set CONDA_VERSION=2
 )
