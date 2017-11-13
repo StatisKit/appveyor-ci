@@ -1,6 +1,6 @@
 echo ON
 
-set PWD=%cd%
+set "PWD=%cd%"
 cd %APPVEYOR_BUILD_FOLDER%
 git submodule update --init --recursive
 cd %PDW%
