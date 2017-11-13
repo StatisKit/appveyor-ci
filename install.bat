@@ -1,6 +1,6 @@
 echo ON
 
-git --git-dir .\..\ submodule update --init --recursive
+git --git-dir %APPVEYOR_BUILD_FOLDER% submodule update --init --recursive
 
 if "%CONDA_VERSION%" == "" (
   set CONDA_VERSION=2
