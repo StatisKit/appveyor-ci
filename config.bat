@@ -20,26 +20,36 @@
 :: mplied. See the License for the specific language governing           ::
 :: permissions and limitations under the License.                        ::
 
+SETLOCAL EnableDelayedExpansion
 set TEST_LEVEL=1
 if errorlevel 1 exit 1
 conda config --set always_yes yes
 if errorlevel 1 exit 1
 conda config --add channels r
 if errorlevel 1 exit 1
-conda config --add channels statiskit
-if errorlevel 1 exit 1
+if "%ANACONDA_UPLOAD%" == "statiskit" and "%ANACONDA_LABEL%" == "release" and not "%APPVEYOR_REPO_BRANCH%" = "master (
+  set ANACONDA_LABEL="unstable"
+)
+if "%ANACONDA_UPLOAD%" == "statiskit" and not "!ANACONDA_LABEL!" = "release" and not ! "!ANACONDA_LABEL!" = "unstable" (
+  echo "Variable ANACONDA_LABEL set to '!ANACONDA_LABEL!' instead of 'release' or 'unstable'"
+  exit 1
+)
 if not "%ANACONDA_UPLOAD%" == "statiskit" (
+    conda config --add channels statiskit
+    if errorlevel 1 exit 1
     conda config --add channels statiskit/label/unstable
     if errorlevel 1 exit 1
     conda config --add channels %ANACONDA_UPLOAD%
     if errorlevel 1 exit 1
-    if not "%ANACONDA_LABEL%" == "main" (
-      conda config --add channels %ANACONDA_UPLOAD%/label/%ANACONDA_LABEL%
+    if not "!ANACONDA_LABEL!" == "main" (
+      conda config --add channels %ANACONDA_UPLOAD%/label/!ANACONDA_LABEL!
       if errorlevel 1 exit 1
     )
 ) else (
-    if not "%ANACONDA_LABEL%" == "main" (
-      conda config --add channels statiskit/label/%ANACONDA_LABEL%
+    if not "!ANACONDA_LABEL!" == "release" (
+      conda config --add channels statiskit
       if errorlevel 1 exit 1
     )
+    conda config --add channels statiskit/label/!ANACONDA_LABEL!
+    if errorlevel 1 exit 1
 )
