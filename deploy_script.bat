@@ -28,5 +28,11 @@ if "%ANACONDA_DEPLOY%" == "true" (
         if errorlevel 1 exit 1
     )
 )
+if not "%ANACONDA_RELABEL%" == "" (
+    anaconda label -o %ANACONDA_UPLOAD% --copy %ANACONDA_LABEL% %ANACONDA_RELABEL%
+    if errorlevel 1 exit 1
+    anaconda label -o %ANACONDA_UPLOAD% --remove %ANACONDA_LABEL%
+    if errorlevel 1 exit 1
+)
 
 echo OFF
