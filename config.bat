@@ -30,7 +30,7 @@ if errorlevel 1 exit 1
 if "%ANACONDA_UPLOAD%" == "statiskit" and "%ANACONDA_LABEL%" == "release" and not "%APPVEYOR_REPO_BRANCH%" = "master (
   set ANACONDA_LABEL=unstable
 )
-if "%ANACONDA_UPLOAD%" == "statiskit" and not "!ANACONDA_LABEL!" = "release" and not ! "!ANACONDA_LABEL!" = "unstable" (
+if "%ANACONDA_UPLOAD%" == "statiskit" and not "!ANACONDA_LABEL!" = "release" and not "!ANACONDA_LABEL!" = "unstable" (
   echo "Variable ANACONDA_LABEL set to '!ANACONDA_LABEL!' instead of 'release' or 'unstable'"
   exit 1
 )
