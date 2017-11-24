@@ -27,13 +27,27 @@ conda config --set always_yes yes
 if errorlevel 1 exit 1
 conda config --add channels r
 if errorlevel 1 exit 1
-if "%ANACONDA_UPLOAD%" == "statiskit" and "%ANACONDA_LABEL%" == "release" and not "%APPVEYOR_REPO_BRANCH%" = "master (
-  set ANACONDA_LABEL=unstable
+if "%ANACONDA_UPLOAD%" == "statiskit" (
+  if not "%ANACONDA_LABEL%" == "release" (
+    if not "%APPVEYOR_REPO_BRANCH%" = "master (
+      set ANACONDA_LABEL=unstable
+    )
+  )
 )
-if "%ANACONDA_UPLOAD%" == "statiskit" and not "!ANACONDA_LABEL!" = "release" and not "!ANACONDA_LABEL!" = "unstable" (
-  echo "Variable ANACONDA_LABEL set to '!ANACONDA_LABEL!' instead of 'release' or 'unstable'"
-  exit 1
+
+if "%ANACONDA_UPLOAD%" == "statiskit" (
+  if not "!ANACONDA_LABEL!" = "release" ( 
+    if not "!ANACONDA_LABEL!" = "unstable" (
+      echo "Variable ANACONDA_LABEL set to '!ANACONDA_LABEL!' instead of 'release' or 'unstable'"
+      exit 1
+  )
+  if not "!ANACONDA_LABEL!" = "unstable" ( 
+    if not "!ANACONDA_LABEL!" = "release" (
+      echo "Variable ANACONDA_LABEL set to '!ANACONDA_LABEL!' instead of 'release' or 'unstable'"
+      exit 1
+  )
 )
+
 if not "%ANACONDA_UPLOAD%" == "statiskit" (
     conda config --add channels statiskit
     if errorlevel 1 exit 1
