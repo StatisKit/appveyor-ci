@@ -65,6 +65,9 @@ if not "%ANACONDA_UPLOAD%" == "statiskit" (
     if not "!ANACONDA_LABEL!" == "release" (
       conda config --add channels statiskit
       if errorlevel 1 exit 1
+    ) else (
+        set ANACONDA_LABEL=appveyor-release
+        set ANACONDA_RELEASE=true
     )
     conda config --add channels statiskit/label/!ANACONDA_LABEL!
     if errorlevel 1 exit 1

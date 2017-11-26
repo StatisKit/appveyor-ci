@@ -45,6 +45,10 @@ if "%ANACONDA_DEPLOY%" == "" (
     )
 )
 
+if "%ANACONDA_RELEASE%" == "" (
+    set ANACONDA_RELEASE=false
+)
+
 if "%ANACONDA_LABEL%" == "" (
     set ANACONDA_LABEL=main
 )

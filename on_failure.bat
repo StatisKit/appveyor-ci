@@ -22,4 +22,9 @@
 
 echo ON
 
+if "%ANACONDA_RELEASE%" == "true" (
+    anaconda label -o %ANACONDA_UPLOAD% --remove %ANACONDA_LABEL%
+    if errorlevel 1 exit 1
+)
+
 echo OFF
