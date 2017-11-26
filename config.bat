@@ -20,20 +20,20 @@
 :: mplied. See the License for the specific language governing           ::
 :: permissions and limitations under the License.                        ::
 
-SETLOCAL EnableDelayedExpansion
+:: SETLOCAL EnableDelayedExpansion
 set TEST_LEVEL=1
 if errorlevel 1 exit 1
 conda config --set always_yes yes
 if errorlevel 1 exit 1
-:: conda config --add channels r
-:: if errorlevel 1 exit 1
-:: if "%ANACONDA_UPLOAD%" == "statiskit" (
-::   if "%ANACONDA_LABEL%" == "release" (
-::     if not "%APPVEYOR_REPO_BRANCH%" == "master" (
-::       set ANACONDA_LABEL=unstable
-::     )
-::   )
-:: )
+conda config --add channels r
+if errorlevel 1 exit 1
+if "%ANACONDA_UPLOAD%" == "statiskit" (
+  if "%ANACONDA_LABEL%" == "release" (
+    if not "%APPVEYOR_REPO_BRANCH%" == "master" (
+      set ANACONDA_LABEL=unstable
+    )
+  )
+)
 
 if "%ANACONDA_UPLOAD%" == "statiskit" (
   if not "!ANACONDA_LABEL!" == "release" ( 
