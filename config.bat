@@ -25,8 +25,8 @@ set TEST_LEVEL=1
 if errorlevel 1 exit 1
 conda config --set always_yes yes
 if errorlevel 1 exit 1
-conda config --add channels r
-if errorlevel 1 exit 1
+:: conda config --add channels r
+:: if errorlevel 1 exit 1
 :: if "%ANACONDA_UPLOAD%" == "statiskit" (
 ::   if "%ANACONDA_LABEL%" == "release" (
 ::     if not "%APPVEYOR_REPO_BRANCH%" == "master" (
