@@ -35,6 +35,8 @@ if "%ANACONDA_UPLOAD%" == "statiskit" (
   )
 )
 
+echo !ANACONDA_LABEL!
+
 if "%ANACONDA_UPLOAD%" == "statiskit" (
   if not "!ANACONDA_LABEL!" == "release" ( 
     if not "!ANACONDA_LABEL!" == "unstable" (
