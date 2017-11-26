@@ -28,7 +28,7 @@ if errorlevel 1 exit 1
 conda config --add channels r
 if errorlevel 1 exit 1
 if "%ANACONDA_UPLOAD%" == "statiskit" (
-  if not "%ANACONDA_LABEL%" == "release" (
+  if "%ANACONDA_LABEL%" == "release" (
     if not "%APPVEYOR_REPO_BRANCH%" == "master" (
       set ANACONDA_LABEL=unstable
     )
