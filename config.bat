@@ -74,3 +74,7 @@ if not "%ANACONDA_UPLOAD%" == "statiskit" (
     conda config --add channels statiskit/label/!ANACONDA_LABEL!
     if errorlevel 1 exit 1
 )
+
+endlocal && set ANACONDA_LABEL=!ANACONDA_LABEL!
+
+echo %ANACONDA_LABEL%
