@@ -23,7 +23,7 @@
 echo ON
 
 if not "%CONDA_RECIPE%"=="" (
-  conda build --old-build-string --python=%MAJOR_PYTHON_VERSION%.%MINOR_PYTHON_VERSION% ..\%CONDA_RECIPE%
+  %CMD_IN_ENV% conda build --old-build-string --python=%MAJOR_PYTHON_VERSION%.%MINOR_PYTHON_VERSION% ..\%CONDA_RECIPE%
   if errorlevel 1 exit 1
 )
 
