@@ -22,9 +22,6 @@
 
 echo ON
 
-:: if "%ANACONDA_RELEASE%" == "true" (
-::     anaconda label -o %ANACONDA_UPLOAD% --remove %ANACONDA_LABEL%
-::     if errorlevel 1 exit 1
-:: )
+for %i in (%CONDA_PREFIX%\conda-bld\broken\*) do anaconda upload %%i -u %ANACONDA_UPLOAD% --label broken
 
 echo OFF
