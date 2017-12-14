@@ -23,7 +23,9 @@
 echo ON
 
 if exist %CONDA_PREFIX%\conda-bld\broken (
-  for %i in (%CONDA_PREFIX%\conda-bld\broken\*) do anaconda upload %%i -u %ANACONDA_UPLOAD% --label broken
+  for %%i in ("%CONDA_PREFIX%\conda-bld\broken\*") do (
+    anaconda upload %%i -u %ANACONDA_UPLOAD% --label broken
+  )
 )
 
 echo OFF
