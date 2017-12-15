@@ -28,7 +28,9 @@ if exist %CONDA_PREFIX%\conda-bld\broken (
   )
 )
 
-anaconda label -o $ANACONDA_UPLOAD --copy $ANACONDA_LABEL broken
-anaconda label -o $ANACONDA_UPLOAD --remove $ANACONDA_LABEL
+if not "%ANACONDA_UPLOAD%" == "" (
+  anaconda label -o %ANACONDA_UPLOAD% --copy %ANACONDA_LABEL% broken
+  anaconda label -o %ANACONDA_UPLOAD% --remove %ANACONDA_LABEL%
+)
 
 echo OFF
