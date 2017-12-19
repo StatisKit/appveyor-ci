@@ -22,17 +22,15 @@
 
 echo ON
 
-if not "%ANACONDA_PASSWORD%" == "" (
-  if not "%ANACONDA_USERNAME%" == "" (
-    if not "%CONDA_RECIPE%" == "" (
-      call before_deploy.bat
-      if exist %CONDA_PREFIX%\conda-bld\broken (
-        for %%i in ("%CONDA_PREFIX%\conda-bld\broken\*.tar.bz2") do (
-          anaconda upload %%i -u %ANACONDA_UPLOAD% --label broken
-        )
+if not "%ANACONDA_USERNAME%" == "" (
+  if not "%CONDA_RECIPE%" == "" (
+    call before_deploy.bat
+    if exist %CONDA_PREFIX%\conda-bld\broken (
+      for %%i in ("%CONDA_PREFIX%\conda-bld\broken\*.tar.bz2") do (
+        anaconda upload %%i -u %ANACONDA_UPLOAD% --label broken
       )
-      call after_deploy.bat
     )
+    call after_deploy.bat
   )
 )
 
