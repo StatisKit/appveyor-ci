@@ -23,7 +23,7 @@
 echo ON
 
 if exist %CONDA_PREFIX%\conda-bld\broken (
-  for %%i in ("%CONDA_PREFIX%\conda-bld\broken\*") do (
+  for %%i in ("%CONDA_PREFIX%\conda-bld\broken\*.tar.bz2") do (
     anaconda upload %%i -u %ANACONDA_UPLOAD% --label broken
   )
 )
