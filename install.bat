@@ -74,6 +74,8 @@ if not "%ANACONDA_CHANNELS%"=="" (
   conda config --add channels %ANACONDA_CHANNELS%
   if errorlevel 1 exit 1
 )
+conda config --set always_yes yes
+if errorlevel 1 exit 1
 
 conda update conda
 if errorlevel 1 exit 1
