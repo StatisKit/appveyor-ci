@@ -70,7 +70,7 @@ if not "%ANACONDA_UPLOAD%" == "statiskit" (
     conda config --add channels statiskit 
     if errorlevel 1 exit 1
     if "!ANACONDA_LABEL_TMP!" == "release" (
-        set ANACONDA_LABEL_TMP=win_%ARCH%-release
+        set ANACONDA_LABEL_TMP=win-%ARCH%_release
         set ANACONDA_RELEASE=true
     )
     conda config --add channels statiskit/label/!ANACONDA_LABEL_TMP!
