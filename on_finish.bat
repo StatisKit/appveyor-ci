@@ -22,6 +22,6 @@
 
 echo ON
 
-rmdir /s /q %HOMEDRIVE%:\Miniconda
+rmdir /s /q %HOMEDRIVE%\Miniconda
 
 echo OFF
