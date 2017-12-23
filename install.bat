@@ -20,7 +20,6 @@
 :: mplied. See the License for the specific language governing           ::
 :: permissions and limitations under the License.                        ::
 
-setlocal enableDelayedExpansion
 echo ON
 
 set "CWD_VAR=%cd%"

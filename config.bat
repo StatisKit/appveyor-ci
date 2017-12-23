@@ -46,14 +46,17 @@ if not "%ANACONDA_UPLOAD%" == "statiskit" (
     conda config --add channels %ANACONDA_UPLOAD%
     :: if errorlevel 1 exit 1
     if not "%ANACONDA_LABEL%" == "main" (
-      conda config --add channels %ANACONDA_UPLOAD%/label/%ANACONDA_LABEL%
+        if "%ANACONDA_LABEL%" == "release" (
+            conda config --add channels statiskit/label/win-%ARCH%_release
+        ) else (
+            conda config --add channels %ANACONDA_UPLOAD%/label/%ANACONDA_LABEL%
+        )
       :: if errorlevel 1 exit 1
     )
 ) else (
     conda config --add channels statiskit 
     :: if errorlevel 1 exit 1
     if "%ANACONDA_LABEL%" == "release" (
-        set ANACONDA_LABEL=win-%ARCH%_release
         conda config --add channels statiskit/label/win-%ARCH%_release
     ) else (
         conda config --add channels statiskit/label/%ANACONDA_LABEL%
