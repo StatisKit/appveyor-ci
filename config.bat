@@ -49,7 +49,7 @@ rem       echo "Variable ANACONDA_LABEL set to '!ANACONDA_LABEL_TMP!' instead of
 rem       exit 1
 rem     )
 rem   )
-rem )
+rem a
 
 if not "%ANACONDA_UPLOAD%" == "statiskit" (
     conda config --add channels statiskit
