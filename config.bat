@@ -36,20 +36,6 @@ if "!ANACONDA_LABEL_TMP!" == "" (
     set ANACONDA_LABEL_TMP=%ANACONDA_LABEL%
 )
 
-rem if "%ANACONDA_UPLOAD%" == "statiskit" (
-rem   if not "!ANACONDA_LABEL_TMP!" == "release" ( 
-rem     if not "!ANACONDA_LABEL_TMP!" == "unstable" (
-rem       echo "Variable ANACONDA_LABEL set to '!ANACONDA_LABEL_TMP!' instead of 'release' or 'unstable'"
-rem       exit 1
-rem     )
-rem   )
-rem   if not "!ANACONDA_LABEL_TMP!" == "unstable" ( 
-rem     if not "!ANACONDA_LABEL_TMP!" == "release" (
-rem       echo "Variable ANACONDA_LABEL set to '!ANACONDA_LABEL_TMP!' instead of 'release' or 'unstable'"
-rem       exit 1
-rem     )
-rem   )
-rem a
 
 if not "%ANACONDA_UPLOAD%" == "statiskit" (
     conda config --add channels statiskit
