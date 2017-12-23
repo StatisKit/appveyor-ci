@@ -1,0 +1,1 @@
+echo %ANACONDA_LABEL%

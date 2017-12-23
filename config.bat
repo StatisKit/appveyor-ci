@@ -60,7 +60,7 @@ if not "%ANACONDA_UPLOAD%" == "statiskit" (
     :: if errorlevel 1 exit 1
     if not "!ANACONDA_LABEL_TMP!" == "main" (
       conda config --add channels %ANACONDA_UPLOAD%/label/!ANACONDA_LABEL_TMP!
-      if errorlevel 1 exit 1
+      :: if errorlevel 1 exit 1
     )
 ) else (
     conda config --add channels statiskit 

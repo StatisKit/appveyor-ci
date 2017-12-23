@@ -82,7 +82,7 @@ if errorlevel 1 exit 1
 python release.py
 if errorlevel 1 exit 1
 
-echo %ANACONDA_LABEL%
+call test.bat
 call config.bat
 if errorlevel 1 exit 1
 call test.bat
