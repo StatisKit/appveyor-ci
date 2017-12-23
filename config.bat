@@ -24,7 +24,7 @@ setlocal EnableDelayedExpansion
 set TEST_LEVEL=1
 if errorlevel 1 exit 1
 conda config --add channels r
-if errorlevel 1 exit 1
+:: if errorlevel 1 exit 1
 if "%ANACONDA_UPLOAD%" == "statiskit" (
   if "%ANACONDA_LABEL%" == "release" (
     if not "%APPVEYOR_REPO_BRANCH%" == "master" (
@@ -53,23 +53,23 @@ if "%ANACONDA_UPLOAD%" == "statiskit" (
 
 if not "%ANACONDA_UPLOAD%" == "statiskit" (
     conda config --add channels statiskit
-    if errorlevel 1 exit 1
+    :: if errorlevel 1 exit 1
     conda config --add channels statiskit/label/unstable
-    if errorlevel 1 exit 1
+    :: if errorlevel 1 exit 1
     conda config --add channels %ANACONDA_UPLOAD%
-    if errorlevel 1 exit 1
+    :: if errorlevel 1 exit 1
     if not "!ANACONDA_LABEL_TMP!" == "main" (
       conda config --add channels %ANACONDA_UPLOAD%/label/!ANACONDA_LABEL_TMP!
       if errorlevel 1 exit 1
     )
 ) else (
     conda config --add channels statiskit 
-    if errorlevel 1 exit 1
+    :: if errorlevel 1 exit 1
     if "!ANACONDA_LABEL_TMP!" == "release" (
         set ANACONDA_LABEL_TMP=win-%ARCH%_release
     )
     conda config --add channels statiskit/label/!ANACONDA_LABEL_TMP!
-    if errorlevel 1 exit 1
+    :: if errorlevel 1 exit 1
 )
 
 endlocal && set ANACONDA_LABEL=%ANACONDA_LABEL_TMP%
