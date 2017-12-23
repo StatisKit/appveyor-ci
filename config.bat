@@ -23,7 +23,7 @@
 setlocal EnableDelayedExpansion
 set TEST_LEVEL=1
 if errorlevel 1 exit 1
-conda config --add channels r
+rem conda config --add channels r
 :: if errorlevel 1 exit 1
 if "%ANACONDA_UPLOAD%" == "statiskit" (
   if "%ANACONDA_LABEL%" == "release" (
