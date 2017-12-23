@@ -23,7 +23,7 @@
 setlocal EnableDelayedExpansion
 set TEST_LEVEL=1
 if errorlevel 1 exit 1
-rem conda config --add channels r
+conda config --add channels r
 :: if errorlevel 1 exit 1
 if "%ANACONDA_UPLOAD%" == "statiskit" (
   if "%ANACONDA_LABEL%" == "release" (
@@ -36,6 +36,14 @@ if "!ANACONDA_LABEL_TMP!" == "" (
     set ANACONDA_LABEL_TMP=%ANACONDA_LABEL%
 )
 
+if "%ANACONDA_UPLOAD%" == "statiskit" if not "%ANACONDA_LABEL%" == "release" if not "%ANACONDA_LABEL%" == "unstable" (
+    echo "Variable ANACONDA_LABEL set to '%ANACONDA_LABEL%' instead of 'release' or 'unstable'"
+    exit 1
+)
+if "%ANACONDA_UPLOAD%" == "statiskit" if not "%ANACONDA_LABEL%" == "unstable" if not "%ANACONDA_LABEL%" == "release" (
+    echo "Variable ANACONDA_LABEL set to '%ANACONDA_LABEL%' instead of 'release' or 'unstable'"
+    exit 1
+)
 
 if not "%ANACONDA_UPLOAD%" == "statiskit" (
     conda config --add channels statiskit
