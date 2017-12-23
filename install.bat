@@ -88,21 +88,13 @@ if "%ANACONDA_LABEL%" == "release" (
 call config.bat
 if errorlevel 1 exit 1
 
-for /f %%i in ('python python_version.py') DO (set PYTHON_VERSION=%%i)
+for /f %%i in ('python major_python_version.py') DO (set MAJOR_PYTHON_VERSION=%%i)
 if errorlevel 1 exit 1
 
-set MAJOR_PYTHON_VERSION=%PYTHON_VERSION:~0,1%
+for /f %%i in ('python minor_python_version.py') DO (set MINOR_PYTHON_VERSION=%%i)
+if errorlevel 1 exit 1
 
-if "%PYTHON_VERSION:~2,1%" == "" (
-    :: PYTHON_VERSION style, such as 27, 34 etc.
-    set MINOR_PYTHON_VERSION=%PYTHON_VERSION:~1,1%
-) else (
-    if "%PYTHON_VERSION:~3,1%" == "." (
-     set MINOR_PYTHON_VERSION=%PYTHON_VERSION:~2,1%
-    ) else (
-     set MINOR_PYTHON_VERSION=%PYTHON_VERSION:~2,2%
-    )
-)
+set PYTHON_VERSION=%MAJOR_PYTHON_VERSION%.%MINOR_PYTHON_VERSION%
 
 set CMD_IN_ENV=cmd /E:ON /V:ON /C %cd%\\cmd_in_env.cmd
 if errorlevel 1 exit 1
