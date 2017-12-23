@@ -82,8 +82,10 @@ if errorlevel 1 exit 1
 python release.py
 if errorlevel 1 exit 1
 
+echo %ANACONDA_LABEL%
 call config.bat
 if errorlevel 1 exit 1
+echo %ANACONDA_LABEL%
 
 for /f %%i in ('python major_python_version.py') DO (set MAJOR_PYTHON_VERSION=%%i)
 if errorlevel 1 exit 1
