@@ -1,1 +1,1 @@
-echo %ANACONDA_LABEL%
+echo %ANACONDA_UPLOAD%

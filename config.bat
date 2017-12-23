@@ -20,54 +20,19 @@
 :: mplied. See the License for the specific language governing           ::
 :: permissions and limitations under the License.                        ::
 
-setlocal EnableDelayedExpansion
 set TEST_LEVEL=1
 if errorlevel 1 exit 1
-rem conda config --add channels r
+conda config --add channels r
 :: if errorlevel 1 exit 1
 if "%ANACONDA_UPLOAD%" == "statiskit" (
   if "%ANACONDA_LABEL%" == "release" (
     if not "%APPVEYOR_REPO_BRANCH%" == "master" (
-        set ANACONDA_LABEL_TMP=unstable
+        set REAL_ANACONDA_LABEL=unstable
     )
   )
 )
-if "!ANACONDA_LABEL_TMP!" == "" (
-    set ANACONDA_LABEL_TMP=%ANACONDA_LABEL%
+if "%REAL_ANACONDA_LABEL%" == "" (
+    set REAL_ANACONDA_LABEL=%ANACONDA_LABEL%
 )
 
-if "%ANACONDA_UPLOAD%" == "statiskit" if not "%ANACONDA_LABEL%" == "release" if not "%ANACONDA_LABEL%" == "unstable" (
-    echo "Variable ANACONDA_LABEL set to '%ANACONDA_LABEL%' instead of 'release' or 'unstable'"
-    exit 1
-)
-if "%ANACONDA_UPLOAD%" == "statiskit" if not "%ANACONDA_LABEL%" == "release" if not "%ANACONDA_LABEL%" == "unstable" (
-    echo "Variable ANACONDA_LABEL set to '%ANACONDA_LABEL%' instead of 'release' or 'unstable'"
-    exit 1
-)
-if "%ANACONDA_UPLOAD%" == "statiskit" if not "%ANACONDA_LABEL%" == "unstable" if not "%ANACONDA_LABEL%" == "release" (
-    echo "Variable ANACONDA_LABEL set to '%ANACONDA_LABEL%' instead of 'release' or 'unstable'"
-    exit 1
-)
-
-if not "%ANACONDA_UPLOAD%" == "statiskit" (
-    conda config --add channels statiskit
-    :: if errorlevel 1 exit 1
-    conda config --add channels statiskit/label/unstable
-    :: if errorlevel 1 exit 1
-    conda config --add channels %ANACONDA_UPLOAD%
-    :: if errorlevel 1 exit 1
-    if not "!ANACONDA_LABEL_TMP!" == "main" (
-      conda config --add channels %ANACONDA_UPLOAD%/label/!ANACONDA_LABEL_TMP!
-      :: if errorlevel 1 exit 1
-    )
-) else (
-    conda config --add channels statiskit 
-    :: if errorlevel 1 exit 1
-    if "!ANACONDA_LABEL_TMP!" == "release" (
-        set ANACONDA_LABEL_TMP=win-%ARCH%_release
-    )
-    conda config --add channels statiskit/label/!ANACONDA_LABEL_TMP!
-    :: if errorlevel 1 exit 1
-)
-
-endlocal && set ANACONDA_LABEL=%ANACONDA_LABEL_TMP%
+call subconfig.bat
