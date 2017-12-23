@@ -21,4 +21,4 @@
 ## permissions and limitations under the License.                        ##
 
 import sys
-print("".join(str(i) for i in sys.version_info[:2]))
+print(str(sys.version_info.major) + str(sys.version_info.minor))
