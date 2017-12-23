@@ -36,8 +36,6 @@ if "!ANACONDA_LABEL_TMP!" == "" (
     set ANACONDA_LABEL_TMP=%ANACONDA_LABEL%
 )
 
-echo !ANACONDA_LABEL_TMP!
-
 if "%ANACONDA_UPLOAD%" == "statiskit" (
   if not "!ANACONDA_LABEL_TMP!" == "release" ( 
     if not "!ANACONDA_LABEL_TMP!" == "unstable" (
@@ -75,5 +73,3 @@ if not "%ANACONDA_UPLOAD%" == "statiskit" (
 )
 
 endlocal && set ANACONDA_LABEL=%ANACONDA_LABEL_TMP%
-
-echo %ANACONDA_LABEL%
