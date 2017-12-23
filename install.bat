@@ -80,7 +80,7 @@ if errorlevel 1 exit 1
 conda update conda
 if errorlevel 1 exit 1
 conda install conda-build anaconda-client
-if errorlevel 1 exit 1
+:: if errorlevel 1 exit 1
 if "%ANACONDA_LABEL%" == "release" (
   python release.py
   if errorlevel 1 exit 1
