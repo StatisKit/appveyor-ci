@@ -24,15 +24,37 @@ set TEST_LEVEL=1
 if errorlevel 1 exit 1
 conda config --add channels r
 :: if errorlevel 1 exit 1
-if "%ANACONDA_UPLOAD%" == "statiskit" (
-  if "%ANACONDA_LABEL%" == "release" (
-    if not "%APPVEYOR_REPO_BRANCH%" == "master" (
-        set REAL_ANACONDA_LABEL=unstable
-    )
-  )
+
+if "%ANACONDA_UPLOAD%" == "statiskit" if not "%ANACONDA_LABEL%" == "release" if not "%ANACONDA_LABEL%" == "unstable" (
+    echo "Variable ANACONDA_LABEL set to '%ANACONDA_LABEL%' instead of 'release' or 'unstable'"
+    exit 1
 )
-if "%REAL_ANACONDA_LABEL%" == "" (
-    set REAL_ANACONDA_LABEL=%ANACONDA_LABEL%
+if "%ANACONDA_UPLOAD%" == "statiskit" if not "%ANACONDA_LABEL%" == "release" if not "%ANACONDA_LABEL%" == "unstable" (
+    echo "Variable ANACONDA_LABEL set to '%ANACONDA_LABEL%' instead of 'release' or 'unstable'"
+    exit 1
+)
+if "%ANACONDA_UPLOAD%" == "statiskit" if not "%ANACONDA_LABEL%" == "unstable" if not "%ANACONDA_LABEL%" == "release" (
+    echo "Variable ANACONDA_LABEL set to '%ANACONDA_LABEL%' instead of 'release' or 'unstable'"
+    exit 1
 )
 
-call subconfig.bat
+if not "%ANACONDA_UPLOAD%" == "statiskit" (
+    conda config --add channels statiskit
+    :: if errorlevel 1 exit 1
+    conda config --add channels statiskit/label/unstable
+    :: if errorlevel 1 exit 1
+    conda config --add channels %ANACONDA_UPLOAD%
+    :: if errorlevel 1 exit 1
+    if not "%ANACONDA_LABEL%" == "main" (
+      conda config --add channels %ANACONDA_UPLOAD%/label/%ANACONDA_LABEL%
+      :: if errorlevel 1 exit 1
+    )
+) else (
+    conda config --add channels statiskit 
+    :: if errorlevel 1 exit 1
+    if "%ANACONDA_LABEL%" == "release" (
+        set ANACONDA_LABEL=win-%ARCH%_release
+    )
+    conda config --add channels statiskit/label/%ANACONDA_LABEL%
+    :: if errorlevel 1 exit 1
+)

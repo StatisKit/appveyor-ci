@@ -1,1 +1,0 @@
-echo %ANACONDA_UPLOAD%
