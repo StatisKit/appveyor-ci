@@ -22,8 +22,9 @@
 
 set TEST_LEVEL=1
 if errorlevel 1 exit 1
+
 conda config --add channels r
-:: if errorlevel 1 exit 1
+if errorlevel 1 exit 1
 
 if "%ANACONDA_UPLOAD%" == "statiskit" if not "%ANACONDA_LABEL%" == "release" if not "%ANACONDA_LABEL%" == "unstable" (
     echo "Variable ANACONDA_LABEL set to '%ANACONDA_LABEL%' instead of 'release' or 'unstable'"
@@ -40,26 +41,21 @@ if "%ANACONDA_UPLOAD%" == "statiskit" if not "%ANACONDA_LABEL%" == "unstable" if
 
 if not "%ANACONDA_UPLOAD%" == "statiskit" (
     conda config --add channels statiskit
-    :: if errorlevel 1 exit 1
-    conda config --add channels statiskit/label/unstable
-    :: if errorlevel 1 exit 1
-    conda config --add channels %ANACONDA_UPLOAD%
-    :: if errorlevel 1 exit 1
-    if not "%ANACONDA_LABEL%" == "main" (
-        if "%ANACONDA_LABEL%" == "release" (
-            conda config --add channels statiskit/label/win-%ARCH%_release
-        ) else (
-            conda config --add channels %ANACONDA_UPLOAD%/label/%ANACONDA_LABEL%
-        )
-      :: if errorlevel 1 exit 1
+    if errorlevel 1 exit 1
+    if not "%ANACONDA_LABEL%" == "release" (
+        conda config --add channels statiskit/label/unstable
+        if errorlevel 1 exit 1
     )
-) else (
-    conda config --add channels statiskit 
-    :: if errorlevel 1 exit 1
+)
+
+conda config --add channels %ANACONDA_UPLOAD%
+if errorlevel 1 exit 1
+if not "%ANACONDA_LABEL%" == "main" (
     if "%ANACONDA_LABEL%" == "release" (
-        conda config --add channels statiskit/label/win-%ARCH%_release
+        conda config --add channels %ANACONDA_UPLOAD%/label/win-%ARCH%_release
+        if errorlevel 1 exit 1
     ) else (
-        conda config --add channels statiskit/label/%ANACONDA_LABEL%
+        conda config --add channels %ANACONDA_UPLOAD%/label/%ANACONDA_LABEL%
+        if errorlevel 1 exit 1
     )
-    :: if errorlevel 1 exit 1
 )
