@@ -79,10 +79,9 @@ if errorlevel 1 exit 1
 
 conda update conda
 if errorlevel 1 exit 1
-if "%ANACONDA_LABEL%" == "release" (
-  python release.py
-  if errorlevel 1 exit 1
-)
+python release.py
+if errorlevel 1 exit 1
+
 call config.bat
 if errorlevel 1 exit 1
 

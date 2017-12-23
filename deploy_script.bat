@@ -28,13 +28,17 @@ if "%ANACONDA_DEPLOY%" == "true" (
         if errorlevel 1 exit 1
     )
 )
-if not "%ANACONDA_RELABEL%" == "" (
-    if "%ANACONDA_RELEASE%" == "true" (
-        anaconda label -o %ANACONDA_UPLOAD% --copy %ANACONDA_LABEL% %ANACONDA_RELABEL%
+
+if "%ANACONDA_RELEASE%" == "true" (
+    if "%APPVEYOR_SCHEDULED_BUILD%" == "True" (
+        anaconda label -o %ANACONDA_UPLOAD% --copy %ANACONDA_LABEL% cron
         if errorlevel 1 exit 1
-        anaconda label -o %ANACONDA_UPLOAD% --remove %ANACONDA_LABEL%
+    ) else (
+        anaconda label -o %ANACONDA_UPLOAD% --copy %ANACONDA_LABEL% main
         if errorlevel 1 exit 1
     )
+    anaconda label -o %ANACONDA_UPLOAD% --remove %ANACONDA_LABEL%
+    if errorlevel 1 exit 1
 )
 
 echo OFF
