@@ -77,7 +77,7 @@ if not "%ANACONDA_CHANNELS%"=="" (
 conda config --set always_yes yes
 if errorlevel 1 exit 1
 
-conda install conda=4.4.2
+conda install conda=4.3
 if errorlevel 1 exit 1
 python release.py
 if errorlevel 1 exit 1
