@@ -100,6 +100,7 @@ if errorlevel 1 exit 1
 conda install conda-build=3.0.30 anaconda-client
 if errorlevel 1 exit 1
 conda install conda=4.3.30
+activate root
 if errorlevel 1 exit 1
 
 echo OFF
