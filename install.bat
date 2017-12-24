@@ -77,8 +77,8 @@ if not "%ANACONDA_CHANNELS%"=="" (
 conda config --set always_yes yes
 if errorlevel 1 exit 1
 
-conda update conda
-if errorlevel 1 exit 1
+:: conda update conda
+:: if errorlevel 1 exit 1
 python release.py
 if errorlevel 1 exit 1
 
