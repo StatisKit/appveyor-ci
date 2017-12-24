@@ -97,10 +97,7 @@ set PYTHON_VERSION=%MAJOR_PYTHON_VERSION%.%MINOR_PYTHON_VERSION%
 set CMD_IN_ENV=cmd /E:ON /V:ON /C %cd%\\cmd_in_env.cmd
 if errorlevel 1 exit 1
 
-conda install conda-build=3.0.30 anaconda-client
-if errorlevel 1 exit 1
-conda install conda=4.3.30
-activate root
+conda install conda=4.3.30 conda-build=3.0.30 anaconda-client
 if errorlevel 1 exit 1
 
 echo OFF
