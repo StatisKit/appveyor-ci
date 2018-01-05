@@ -24,11 +24,7 @@ echo ON
 
 if "%ANACONDA_DEPLOY%" == "true" (
     if not "%CONDA_RECIPE%" == "" (
-        if "%ANACONDA_LABEL%" == "release" (
-            for /f %%i in ('conda build --old-build-string --python=%PYTHON_VERSION% ..\%CONDA_RECIPE% --output') do anaconda upload %%i --user %ANACONDA_UPLOAD% --force --label win-%ARCH%_release
-        ) else (
-            for /f %%i in ('conda build --old-build-string --python=%PYTHON_VERSION% ..\%CONDA_RECIPE% --output') do anaconda upload %%i --user %ANACONDA_UPLOAD% --force --label %ANACONDA_LABEL%
-        )
+        for /f %%i in ('conda build --old-build-string --python=%PYTHON_VERSION% ..\%CONDA_RECIPE% --output') do anaconda upload %%i --user %ANACONDA_UPLOAD% %TMP_ANACONDA_FORCE% --label %TMP_ANACONDA_LABEL%
         if errorlevel 1 exit 1
     )
 )

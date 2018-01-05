@@ -22,6 +22,12 @@
 
 echo OFF
 
+if "%ANACONDA_LABEL%" == "release" (
+    set TMP_ANACONDA_LABEL=win-%ARCH%_release
+) else (
+    set TMP_ANACONDA_LABEL=%ANACONDA_LABEL%
+)
+
 if "%ANACONDA_DEPLOY%" == "true" (
     echo y|anaconda login --password %ANACONDA_PASSWORD% --username %ANACONDA_USERNAME%
     if errorlevel 1 exit 1
