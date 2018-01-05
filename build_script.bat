@@ -22,6 +22,12 @@
 
 echo ON
 
+if "%ANACONDA_FORCE%" == "true" (
+    set TMP_ANACONDA_FORCE=--force
+) else (
+    set TMP_ANACONDA_FORCE=
+)
+
 if not "%CONDA_RECIPE%"=="" (
   %CMD_IN_ENV% conda build --old-build-string --python=%PYTHON_VERSION% ..\%CONDA_RECIPE%
   if errorlevel 1 exit 1

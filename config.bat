@@ -55,3 +55,9 @@ if not "%ANACONDA_LABEL%" == "main" (
         if errorlevel 1 exit 1
     )
 )
+
+if "%APPVEYOR_RE_BUILD%" == "True" (
+    set ANACONDA_FORCE=true
+) else (
+    set ANACONDA_FORCE=false
+)

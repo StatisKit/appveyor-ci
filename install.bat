@@ -99,11 +99,10 @@ if errorlevel 1 exit 1
 
 conda install conda=4.3.30 conda-build=3.0.30 anaconda-client
 if errorlevel 1 exit 1
+activate root
+if errorlevel 1 exit 1
 
-if "%ANACONDA_FORCE%" == "true" (
-    set TMP_ANACONDA_FORCE=--force
-) else (
-    set TMP_ANACONDA_FORCE=
-)
+anaconda config --set auto_register yes
+if errorlevel 1 exit 1
 
 echo OFF
