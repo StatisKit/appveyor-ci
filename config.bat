@@ -20,6 +20,20 @@
 :: mplied. See the License for the specific language governing           ::
 :: permissions and limitations under the License.                        ::
 
+if "%APPVEYOR_RE_BUILD%" == "True" (
+    set ANACONDA_FORCE=true
+) else (
+    set ANACONDA_FORCE=true
+)
+
+if "%ANACONDA_LABEL%" == "release" (
+    set OLD_BUILD_STRING=false
+    set ANACONDA_LABEL_ARG=win-%ARCH%_release
+) else (
+    set OLD_BUILD_STRING=true
+    set ANACONDA_LABEL_ARG=%ANACONDA_LABEL%
+)
+
 set TEST_LEVEL=1
 if errorlevel 1 exit 1
 
@@ -39,7 +53,7 @@ if not "%ANACONDA_UPLOAD%" == "statiskit" (
     conda config --add channels statiskit
     if errorlevel 1 exit 1
     if not "%ANACONDA_LABEL%" == "release" (
-        conda config --add channels statiskit/label/unstable
+        conda config --add channels statiskit/label/%ANACONDA_LABEL_ARG%
         if errorlevel 1 exit 1
     )
 )
@@ -47,17 +61,6 @@ if not "%ANACONDA_UPLOAD%" == "statiskit" (
 conda config --add channels %ANACONDA_UPLOAD%
 if errorlevel 1 exit 1
 if not "%ANACONDA_LABEL%" == "main" (
-    if "%ANACONDA_LABEL%" == "release" (
-        conda config --add channels %ANACONDA_UPLOAD%/label/win-%ARCH%_release
-        if errorlevel 1 exit 1
-    ) else (
-        conda config --add channels %ANACONDA_UPLOAD%/label/%ANACONDA_LABEL%
-        if errorlevel 1 exit 1
-    )
-)
-
-if "%APPVEYOR_RE_BUILD%" == "True" (
-    set ANACONDA_FORCE=true
-) else (
-    set ANACONDA_FORCE=false
+    conda config --add channels %ANACONDA_UPLOAD%/label/%ANACONDA_LABEL_ARG%
+    if errorlevel 1 exit 1
 )

@@ -105,4 +105,7 @@ if errorlevel 1 exit 1
 anaconda config --set auto_register yes
 if errorlevel 1 exit 1
 
+call post_config.bat
+if errorlevel 1 exit 1
+
 echo OFF

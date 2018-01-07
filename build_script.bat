@@ -29,7 +29,7 @@ if "%ANACONDA_FORCE%" == "true" (
 )
 
 if not "%CONDA_RECIPE%"=="" (
-  %CMD_IN_ENV% conda build --old-build-string --python=%PYTHON_VERSION% ..\%CONDA_RECIPE%
+  %CMD_IN_ENV% conda build %OLD_BUILD_STRING_ARG% --python=%PYTHON_VERSION% ..\%CONDA_RECIPE%
   if errorlevel 1 exit 1
 )
 

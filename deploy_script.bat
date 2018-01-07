@@ -24,7 +24,7 @@ echo ON
 
 if "%ANACONDA_DEPLOY%" == "true" (
     if not "%CONDA_RECIPE%" == "" (
-        for /f %%i in ('conda build --old-build-string --python=%PYTHON_VERSION% ..\%CONDA_RECIPE% --output') do anaconda upload %%i --user %ANACONDA_UPLOAD% %TMP_ANACONDA_FORCE% --label %TMP_ANACONDA_LABEL%
+        for /f %%i in ('conda build %OLD_BUILD_STRING_ARG% --python=%PYTHON_VERSION% ..\%CONDA_RECIPE% --output') do anaconda upload %%i --user %ANACONDA_UPLOAD% %ANACONDA_FORCE_ARG% --label %ANACONDA_LABEL_ARG%
         if errorlevel 1 exit 1
     )
 )
@@ -32,13 +32,13 @@ if "%ANACONDA_DEPLOY%" == "true" (
 if "%ANACONDA_RELEASE%" == "true" (
     if "%APPVEYOR_REPO_BRANCH%" == "master" (
         if "%APPVEYOR_SCHEDULED_BUILD%" == "True" (
-            anaconda label -o %ANACONDA_UPLOAD% --copy win-%ARCH%_release cron
+            anaconda label -o %ANACONDA_UPLOAD% --copy %ANACONDA_LABEL_ARG% cron
             if errorlevel 1 exit 1
         ) else (
-            anaconda label -o %ANACONDA_UPLOAD% --copy win-%ARCH%_release main
+            anaconda label -o %ANACONDA_UPLOAD% --copy %ANACONDA_LABEL_ARG% main
             if errorlevel 1 exit 1
         )
-        anaconda label -o %ANACONDA_UPLOAD% --remove win-%ARCH%_release
+        anaconda label -o %ANACONDA_UPLOAD% --remove %ANACONDA_LABEL_ARG%
         if errorlevel 1 exit 1
     )
 )
