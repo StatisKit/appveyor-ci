@@ -100,7 +100,7 @@ if errorlevel 1 exit 1
 conda install conda=4.3.30 conda-build=3.0.30 anaconda-client
 if errorlevel 1 exit 1
 call %HOMEDRIVE%\Miniconda\Scripts\activate.bat root
-:: if errorlevel 1 exit 1
+if errorlevel 1 exit 1
 
 anaconda config --set auto_register yes
 if errorlevel 1 exit 1
