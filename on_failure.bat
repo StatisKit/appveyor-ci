@@ -27,7 +27,7 @@ if not "%ANACONDA_USERNAME%" == "" (
     call before_deploy.bat
     if exist %CONDA_PREFIX%\conda-bld\broken (
       for %%i in ("%CONDA_PREFIX%\conda-bld\broken\*.tar.bz2") do (
-        anaconda upload %%i -u %ANACONDA_UPLOAD% %TMP_ANACONDA_FORCE% --label broken
+        anaconda upload %%i -u %ANACONDA_UPLOAD% %ANACONDA_FORCE_ARG% --label broken
       )
     )
     call after_deploy.bat
