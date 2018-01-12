@@ -102,6 +102,9 @@ if errorlevel 1 exit 1
 call %HOMEDRIVE%\Miniconda\Scripts\activate.bat root
 if errorlevel 1 exit 1
 
+conda config --set remote_read_timeout_secs 600
+if errorlevel 1 exit 1
+
 anaconda config --set auto_register yes
 if errorlevel 1 exit 1
 
