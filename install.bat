@@ -81,7 +81,7 @@ if errorlevel 1 exit 1
 
 conda install conda=4.3.30  conda-build=3.0.30 anaconda-client
 if errorlevel 1 exit 1
-activate
+call %HOMEDRIVE%\Miniconda\Scripts\activate.bat
 if errorlevel 1 exit 1
 
 call config.bat
