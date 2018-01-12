@@ -20,6 +20,9 @@
 :: mplied. See the License for the specific language governing           ::
 :: permissions and limitations under the License.                        ::
 
+anaconda config --set auto_register yes
+if errorlevel 1 exit 1
+
 if "%ANACONDA_LABEL_ARG%" == "" set ANACONDA_LABEL_ARG=%ANACONDA_LABEL%
 if errorlevel 1 exit 1
 
