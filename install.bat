@@ -69,21 +69,25 @@ del miniconda.exe
 if errorlevel 1 exit 1
 set PATH=%HOMEDRIVE%\Miniconda;%HOMEDRIVE%\Miniconda\Scripts;%PATH%
 if errorlevel 1 exit 1
-call %HOMEDRIVE%\Miniconda\Scripts\activate.bat root
+call %HOMEDRIVE%\Miniconda\Scripts\activate.bat
 if not "%ANACONDA_CHANNELS%"=="" (
   conda config --add channels %ANACONDA_CHANNELS%
   if errorlevel 1 exit 1
 )
 conda config --set always_yes yes
 if errorlevel 1 exit 1
-
-conda install conda=4.3.30
+conda config --set remote_read_timeout_secs 600
 if errorlevel 1 exit 1
 
-python release.py
+conda install conda=4.3.30  conda-build=3.0.30 anaconda-client
+if errorlevel 1 exit 1
+activate
 if errorlevel 1 exit 1
 
 call config.bat
+if errorlevel 1 exit 1
+
+python release.py
 if errorlevel 1 exit 1
 
 for /f %%i in ('python major_python_version.py') DO (set MAJOR_PYTHON_VERSION=%%i)
@@ -97,16 +101,12 @@ set PYTHON_VERSION=%MAJOR_PYTHON_VERSION%.%MINOR_PYTHON_VERSION%
 set CMD_IN_ENV=cmd /E:ON /V:ON /C %cd%\\cmd_in_env.cmd
 if errorlevel 1 exit 1
 
-conda install conda=4.3.30 conda-build=3.0.30 anaconda-client %CONDA_PACKAGES%
-if errorlevel 1 exit 1
-call %HOMEDRIVE%\Miniconda\Scripts\activate.bat root
-if errorlevel 1 exit 1
-
-conda config --set remote_read_timeout_secs 600
-if errorlevel 1 exit 1
-
-anaconda config --set auto_register yes
-if errorlevel 1 exit 1
+if not "%CONDA_PACKAGES%" == "" (
+  conda install %CONDA_PACKAGES%
+  if errorlevel 1 exit 1
+  call %HOMEDRIVE%\Miniconda\Scripts\activate.bat
+  if errorlevel 1 exit 1
+)
 
 call post_config.bat
 if errorlevel 1 exit 1
