@@ -78,6 +78,8 @@ conda config --set always_yes yes
 if errorlevel 1 exit 1
 conda config --set remote_read_timeout_secs 600
 if errorlevel 1 exit 1
+conda config --set auto_update_conda False
+if errorlevel 1 exit 1
 
 conda install conda=4.3.30  conda-build=3.0.30 anaconda-client
 if errorlevel 1 exit 1
