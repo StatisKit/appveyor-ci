@@ -22,10 +22,13 @@
 
 echo ON
 
-set "CWD_VAR=%cd%"
-cd %APPVEYOR_BUILD_FOLDER%
-git submodule update --init --recursive
-cd %CWD_VAR%
+
+if "%CI%" == "True" (
+  set "CWD_VAR=%cd%"
+  cd %APPVEYOR_BUILD_FOLDER%
+  git submodule update --init --recursive
+  cd %CWD_VAR%
+)
 
 if "%CONDA_VERSION%" == "" (
   set CONDA_VERSION=2
