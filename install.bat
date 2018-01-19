@@ -59,7 +59,7 @@ if "%PLATFORM%" == "x86" (
   set ARCH=x86_64
 )
 
-rmdir /s /q C:\Miniconda
+if "%CI%" == "True" rmdir /s /q C:\Miniconda
 if errorlevel 1 exit 1
 curl https://repo.continuum.io/miniconda/Miniconda%CONDA_VERSION%-latest-Windows-%ARCH%.exe -o miniconda.exe
 if errorlevel 1 exit 1
