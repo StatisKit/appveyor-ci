@@ -23,6 +23,7 @@
 echo ON
 
 rmdir /s /q %HOMEDRIVE%\Miniconda
-rmdir /s /q ..\appveyor-ci
+cd ..
+rmdir /s /q appveyor-ci
 
 echo OFF
