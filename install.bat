@@ -89,8 +89,7 @@ if errorlevel 1 exit 1
 call %HOMEDRIVE%\Miniconda\Scripts\activate.bat
 if errorlevel 1 exit 1
 
-dir
-call config.bat
+call appveyor-ci\config.bat
 if errorlevel 1 exit 1
 
 if "%CI%" == "True" (
