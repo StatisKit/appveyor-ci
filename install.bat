@@ -93,14 +93,14 @@ call appveyor-ci\config.bat
 if errorlevel 1 exit 1
 
 if "%CI%" == "True" (
-  python release.py
+  python appveyor-ci\release.py
   if errorlevel 1 exit 1
 )
 
-for /f %%i in ('python major_python_version.py') DO (set MAJOR_PYTHON_VERSION=%%i)
+for /f %%i in ('python appveyor-ci\major_python_version.py') DO (set MAJOR_PYTHON_VERSION=%%i)
 if errorlevel 1 exit 1
 
-for /f %%i in ('python minor_python_version.py') DO (set MINOR_PYTHON_VERSION=%%i)
+for /f %%i in ('python appveyor-ci\minor_python_version.py') DO (set MINOR_PYTHON_VERSION=%%i)
 if errorlevel 1 exit 1
 
 set PYTHON_VERSION=%MAJOR_PYTHON_VERSION%.%MINOR_PYTHON_VERSION%
