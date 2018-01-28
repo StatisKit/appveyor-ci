@@ -83,11 +83,11 @@ if errorlevel 1 exit 1
 call %HOMEDRIVE%\Miniconda\Scripts\activate.bat
 if errorlevel 1 exit 1
 
-call appveyor-ci\config.bat
+call config.bat
 if errorlevel 1 exit 1
 
 if "%CI%" == "True" (
-  python appveyor-ci\release.py
+  python release.py
   if errorlevel 1 exit 1
 )
 
@@ -109,7 +109,7 @@ if not "%CONDA_PACKAGES%" == "" (
   if errorlevel 1 exit 1
 )
 
-call appveyor-ci\post_config.bat
+call post_config.bat
 if errorlevel 1 exit 1
 
 echo OFF
