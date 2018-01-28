@@ -115,7 +115,7 @@ if not "%CONDA_PACKAGES%" == "" (
   if errorlevel 1 exit 1
 )
 
-call post_config.bat
+call appveyor-ci\post_config.bat
 if errorlevel 1 exit 1
 
 echo OFF
