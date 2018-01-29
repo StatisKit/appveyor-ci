@@ -78,7 +78,7 @@ if errorlevel 1 exit 1
 conda config --set auto_update_conda False
 if errorlevel 1 exit 1
 
-conda install conda=4.3.30  conda-build=3.0.30 anaconda-client=1.6.6
+conda install conda=4.3.30  conda-build=3.0.30 anaconda-client=1.6.5 
 if errorlevel 1 exit 1
 call %HOMEDRIVE%\Miniconda\Scripts\activate.bat
 if errorlevel 1 exit 1
