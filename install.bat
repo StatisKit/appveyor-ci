@@ -56,6 +56,15 @@ if "%PLATFORM%" == "x86" (
   set ARCH=x86_64
 )
 
+if "%JUPYTER_KERNEL%" == "" (
+  if "%CONDA_VERSION%" == "" (
+    set JUPYTER_KERNEL=python2
+  ) else (
+    set JUPYTER_KERNEL=python%CONDA_VERSION%
+  )
+)
+
+
 if "%CI%" == "True" rmdir /s /q C:\Miniconda
 if errorlevel 1 exit 1
 curl https://repo.continuum.io/miniconda/Miniconda%CONDA_VERSION%-latest-Windows-%ARCH%.exe -o miniconda.exe
