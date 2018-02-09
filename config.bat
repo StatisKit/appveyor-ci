@@ -28,7 +28,7 @@ if "%APPVEYOR_RE_BUILD%" == "True" (
 
 if "%ANACONDA_LABEL%" == "release" (
     set OLD_BUILD_STRING=false
-    set ANACONDA_LABEL_ARG=win-%ARCH%_release
+    set ANACONDA_LABEL_ARG=win-%ARCH%_release-%APPVEYOR_BUILD_ID%
 ) else (
     set OLD_BUILD_STRING=true
     set ANACONDA_LABEL_ARG=%ANACONDA_LABEL%
