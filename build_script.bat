@@ -32,7 +32,7 @@ if not "%JUPYTER_NOTEBOOK%" == "" (
     activate appveyor-ci
     if errorlevel 1 exit 1
   )
-  jupyter nbconvert --ExecutePreprocessor.kernel_name="python%CONDA_VERSION%" --ExecutePreprocessor.timeout=0 --to notebook --execute --inplace ..\%JUPYTER_NOTEBOOK%
+  jupyter nbconvert --ExecutePreprocessor.kernel_name=%JUPYTER_KERNEL% --ExecutePreprocessor.timeout=0 --to notebook --execute --inplace ..\%JUPYTER_NOTEBOOK%
   if errorlevel 1 exit 1
 )
 
