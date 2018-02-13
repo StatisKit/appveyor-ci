@@ -20,8 +20,8 @@
 :: mplied. See the License for the specific language governing           ::
 :: permissions and limitations under the License.                        ::
 
-if "%APPVEYOR_RE_BUILD%" == "True" (
-    set ANACONDA_FORCE=true
+if "%ANACONDA_LABEL%" == "True" (
+    set ANACONDA_FORCE=false
 ) else (
     set ANACONDA_FORCE=true
 )
