@@ -36,7 +36,7 @@ if "%ANACONDA_LABEL%" == "release" (
         set ANACONDA_LABEL_ARG=win-%ARCH%_release
     ) else (
         set OLD_BUILD_STRING=true
-        set ANACONDA_LABEL_ARG=%ANACONDA_LABEL%
+        set ANACONDA_LABEL_ARG=unstable
     )
 ) else (
     set OLD_BUILD_STRING=true
