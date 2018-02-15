@@ -20,15 +20,24 @@
 :: mplied. See the License for the specific language governing           ::
 :: permissions and limitations under the License.                        ::
 
-if "%ANACONDA_LABEL%" == "True" (
-    set ANACONDA_FORCE=false
+if "%ANACONDA_LABEL%" == "release" (
+    if "%APPVEYOR_REPO_BRANCH%" == "master" (
+        set ANACONDA_FORCE=false
+    ) else (
+        set ANACONDA_FORCE=true
+    )
 ) else (
     set ANACONDA_FORCE=true
 )
 
 if "%ANACONDA_LABEL%" == "release" (
-    set OLD_BUILD_STRING=false
-    set ANACONDA_LABEL_ARG=win-%ARCH%_release-%APPVEYOR_BUILD_ID%
+    if "%APPVEYOR_REPO_BRANCH%" == "master" (
+        set OLD_BUILD_STRING=false
+        set ANACONDA_LABEL_ARG=win-%ARCH%_release
+    ) else (
+        set OLD_BUILD_STRING=true
+        set ANACONDA_LABEL_ARG=%ANACONDA_LABEL%
+    )
 ) else (
     set OLD_BUILD_STRING=true
     set ANACONDA_LABEL_ARG=%ANACONDA_LABEL%
