@@ -84,17 +84,17 @@ If you want to:
   * :code:`CONDA_RECIPE`.
     The path to the **Conda** recipe to build.
     This path must be relative to the repository root.
-  * :code:`ANACONDA_USERNAME` (optional).
+  * :code:`ANACONDA_LOGIN` (optional).
     The usename used to connect to the **Anaconda Cloud** in order to upload the **Conda** recipe built.
   * :code:`ANACONDA_PASSWORD` (optional).
     The usename's password used to connect to the **Anaconda Cloud** in order to upload the **Conda** recipe built.
-  * :code:`ANACONDA_UPLOAD` (optional).
+  * :code:`ANACONDA_OWNER` (optional).
     The channel used to upload the **Conda** recipe built.
-    If not given, it is set to the :code:`ANACONDA_USERNAME` value.
+    If not given, it is set to the :code:`ANACONDA_LOGIN` value.
   * :code:`ANACONDA_DEPLOY` (optional).
     Deployment into the **Anaconda Cloud**.
-    If set to :code:`true` (default if :code:`ANACONDA_USERNAME` is provided), the **Conda** recipe built will be deployed in the **Anaconda Cloud**.
-    If set to :code:`false` (default if :code:`ANACONDA_USERNAME` is not provided), the **Conda** recipe built will not be deployed in the **Anaconda Cloud**.
+    If set to :code:`true` (default if :code:`ANACONDA_LOGIN` is provided), the **Conda** recipe built will be deployed in the **Anaconda Cloud**.
+    If set to :code:`false` (default if :code:`ANACONDA_LOGIN` is not provided), the **Conda** recipe built will not be deployed in the **Anaconda Cloud**.
   * :code:`ANACONDA_LABEL` equal to :code:`main` by default.
     Label to associate to the **Conda** recipe deployed in the **Anaconda Cloud**.
     
@@ -108,5 +108,5 @@ If you want to:
     
 .. note::
 
-   It is recommanded to define the environment variables :code:`ANACONDA_USERNAME` (resp. :code:`DOCKER_USERNAME`), :code:`ANACONDA_PASSWORD` (resp. :code:`DOCKER_PASSWORD`) and :code:`ANACONDA_UPLOAD` (resp. :code:`DOCKER_UPLOAD`) in the :code:`Settings` pannel of **Travis CI** instead of in the :code:`.travis.yml`.
+   It is recommanded to define the environment variables :code:`ANACONDA_LOGIN` (resp. :code:`DOCKER_LOGIN`), :code:`ANACONDA_PASSWORD` (resp. :code:`DOCKER_PASSWORD`) and :code:`ANACONDA_OWNER` (resp. :code:`DOCKER_OWNER`) in the :code:`Settings` pannel of **Travis CI** instead of in the :code:`.travis.yml`.
  

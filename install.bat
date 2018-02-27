@@ -22,20 +22,24 @@
 
 echo ON
 
+:: set CONDA_PIN=4.3.30
+:: set CONDA_BUILD_PIN=3.0.30
+:: set ANACONDA_CLIENT_PIN=1.6.5
+
 git -C %APPVEYOR_BUILD_FOLDER% submodule update --init --recursive
 
 if "%CONDA_VERSION%" == "" (
   set CONDA_VERSION=2
 )
 
-if not "%ANACONDA_USERNAME%" == "" (
-  if "%ANACONDA_UPLOAD%" == "" (
-    set ANACONDA_UPLOAD=%ANACONDA_USERNAME%
+if not "%ANACONDA_LOGIN%" == "" (
+  if "%ANACONDA_OWNER%" == "" (
+    set ANACONDA_OWNER=%ANACONDA_LOGIN%
   )
 )
 
 if "%ANACONDA_DEPLOY%" == "" (
-    if not "%ANACONDA_USERNAME%" == "" (
+    if not "%ANACONDA_LOGIN%" == "" (
         set ANACONDA_DEPLOY=true
     ) else (
         set ANACONDA_DEPLOY=false
@@ -87,7 +91,13 @@ if errorlevel 1 exit 1
 conda config --set auto_update_conda False
 if errorlevel 1 exit 1
 
-conda install conda=4.3.30  conda-build=3.0.30 anaconda-client=1.6.5 
+if not "%CONDA_PIN%" == "" conda install conda=%CONDA_PIN%
+if not "%CONDA_BUILD_PIN%" == "" (
+  conda install conda-build=%CONDA_BUILD_PIN% 
+) else (
+  conda install conda-build
+)
+
 if errorlevel 1 exit 1
 call %HOMEDRIVE%\Miniconda\Scripts\activate.bat
 if errorlevel 1 exit 1
@@ -100,6 +110,18 @@ if "%CI%" == "True" (
   if errorlevel 1 exit 1
 )
 
+if not "%CI%" == "True" (
+    conda create -n py%CONDA_VERSION%k python=%CONDA_VERSION%
+    if errorlevel 1 exit 1
+    call %HOMEDRIVE%\Miniconda\Scripts\activate.bat activate py%CONDA_VERSION%k
+)
+if not "%ANACONDA_CLIENT_PIN%" == "" (
+    conda install anaconda-client=$ANACONDA_CLIENT_PIN
+    if errorlevel 1 exit 1
+) else (
+    conda install anaconda-client
+    if errorlevel 1 exit 1
+)
 for /f %%i in ('python major_python_version.py') DO (set MAJOR_PYTHON_VERSION=%%i)
 if errorlevel 1 exit 1
 

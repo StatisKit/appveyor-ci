@@ -23,7 +23,7 @@
 echo OFF
 
 if "%ANACONDA_DEPLOY%" == "true" (
-    echo y|anaconda login --password %ANACONDA_PASSWORD% --username %ANACONDA_USERNAME%
+    echo y|anaconda login --password %ANACONDA_PASSWORD% --username %ANACONDA_LOGIN%
     if errorlevel 1 exit 1
 )
 
