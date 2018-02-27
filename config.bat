@@ -36,7 +36,7 @@ if "%ANACONDA_LABEL%" == "release" (
         set ANACONDA_LABEL_ARG=win-%ARCH%_release
     ) else (
         set OLD_BUILD_STRING=true
-        set ANACONDA_LABEL_ARG=unstable
+        set ANACONDA_LABEL_ARG=develop
     )
 ) else (
     set OLD_BUILD_STRING=true
@@ -50,11 +50,11 @@ conda config --add channels r
 if errorlevel 1 exit 1
 
 if "%ANACONDA_OWNER%" == "statiskit" if not "%ANACONDA_LABEL%" == "release" if not "%ANACONDA_LABEL%" == "develop" (
-    echo "Variable ANACONDA_LABEL set to '%ANACONDA_LABEL%' instead of 'release' or 'unstable'"
+    echo "Variable ANACONDA_LABEL set to '%ANACONDA_LABEL%' instead of 'release' or 'develop'"
     exit 1
 )
 if "%ANACONDA_OWNER%" == "statiskit" if not "%ANACONDA_LABEL%" == "develop" if not "%ANACONDA_LABEL%" == "release" (
-    echo "Variable ANACONDA_LABEL set to '%ANACONDA_LABEL%' instead of 'release' or 'unstable'"
+    echo "Variable ANACONDA_LABEL set to '%ANACONDA_LABEL%' instead of 'release' or 'develop'"
     exit 1
 )
 
