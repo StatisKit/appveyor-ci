@@ -79,7 +79,8 @@ del miniconda.exe
 if errorlevel 1 exit 1
 set PATH=%HOMEDRIVE%\Miniconda;%HOMEDRIVE%\Miniconda\Scripts;%PATH%
 if errorlevel 1 exit 1
-call %HOMEDRIVE%\Miniconda\Scripts\activate.bat
+:: call %HOMEDRIVE%\Miniconda\Scripts\activate.bat
+call activate.bat
 if not "%ANACONDA_CHANNELS%"=="" (
   conda.exe config --add channels %ANACONDA_CHANNELS%
   if errorlevel 1 exit 1
@@ -91,7 +92,7 @@ if errorlevel 1 exit 1
 conda.exe config --set auto_update_conda False
 if errorlevel 1 exit 1
 
-if not "%CONDA_PIN%" == "" conda install conda=%CONDA_PIN%
+if not "%CONDA_PIN%" == "" conda.exe install conda=%CONDA_PIN%
 if not "%CONDA_BUILD_PIN%" == "" (
   conda.exe install conda-build=%CONDA_BUILD_PIN% 
 ) else (
@@ -99,7 +100,7 @@ if not "%CONDA_BUILD_PIN%" == "" (
 )
 
 if errorlevel 1 exit 1
-call %HOMEDRIVE%\Miniconda\Scripts\activate.bat
+call activate.bat
 if errorlevel 1 exit 1
 
 call config.bat
@@ -113,7 +114,8 @@ if "%CI%" == "True" (
 if not "%CI%" == "True" (
     conda.exe create -n py%CONDA_VERSION%k python=%CONDA_VERSION%
     if errorlevel 1 exit 1
-    call %HOMEDRIVE%\Miniconda\Scripts\activate.bat activate py%CONDA_VERSION%k
+    call activate.bat py%CONDA_VERSION%k
+    if errorlevel 1 exit 1
 )
 if not "%ANACONDA_CLIENT_PIN%" == "" (
     conda.exe install anaconda-client=$ANACONDA_CLIENT_PIN
@@ -136,7 +138,7 @@ if errorlevel 1 exit 1
 if not "%CONDA_PACKAGES%" == "" (
   conda.exe install %CONDA_PACKAGES%
   if errorlevel 1 exit 1
-  call %HOMEDRIVE%\Miniconda\Scripts\activate.bat
+  call activate.bat
   if errorlevel 1 exit 1
 )
 

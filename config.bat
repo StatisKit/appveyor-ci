@@ -46,7 +46,7 @@ if "%ANACONDA_LABEL%" == "release" (
 set TEST_LEVEL=1
 if errorlevel 1 exit 1
 
-conda config --add channels r
+conda.exe config --add channels r
 if errorlevel 1 exit 1
 
 if "%ANACONDA_OWNER%" == "statiskit" if not "%ANACONDA_LABEL%" == "release" if not "%ANACONDA_LABEL%" == "develop" (
@@ -59,17 +59,17 @@ if "%ANACONDA_OWNER%" == "statiskit" if not "%ANACONDA_LABEL%" == "develop" if n
 )
 
 if not "%ANACONDA_OWNER%" == "statiskit" (
-    conda config --add channels statiskit
+    conda.exe config --add channels statiskit
     if errorlevel 1 exit 1
     if not "%ANACONDA_LABEL%" == "release" (
-        conda config --add channels statiskit/label/%ANACONDA_LABEL_ARG%
+        conda.exe config --add channels statiskit/label/%ANACONDA_LABEL_ARG%
         if errorlevel 1 exit 1
     )
 )
 
-conda config --add channels %ANACONDA_OWNER%
+conda.exe config --add channels %ANACONDA_OWNER%
 if errorlevel 1 exit 1
 if not "%ANACONDA_LABEL%" == "main" (
-    conda config --add channels %ANACONDA_OWNER%/label/%ANACONDA_LABEL_ARG%
+    conda.exe config --add channels %ANACONDA_OWNER%/label/%ANACONDA_LABEL_ARG%
     if errorlevel 1 exit 1
 )

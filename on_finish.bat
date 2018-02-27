@@ -24,7 +24,7 @@ echo ON
 
 if not "%CI%" == "True" (
     call %HOMEDRIVE%\Miniconda\Scripts\activate.bat
-    conda env remove -n py%CONDA_VERSION%k
+    conda.exe env remove -n py%CONDA_VERSION%k
 )
 
 echo OFF
