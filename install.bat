@@ -29,7 +29,7 @@ echo ON
 git -C %APPVEYOR_BUILD_FOLDER% submodule update --init --recursive
 
 if "%CONDA_VERSION%" == "" (
-  set CONDA_VERSION=2
+  set CONDA_VERSION=3
 )
 
 if not "%ANACONDA_LOGIN%" == "" (
