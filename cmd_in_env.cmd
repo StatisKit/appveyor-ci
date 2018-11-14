@@ -41,26 +41,22 @@ SET WIN_SDK_ROOT=C:\Program Files\Microsoft SDKs\Windows
 
 :: Based on the Python version, determine what SDK version to use, and whether
 :: to set the SDK for 64-bit.
-IF %MAJOR_PYTHON_VERSION% == 2 (
+IF %CONDA_VERSION% == 2 (
     SET WINDOWS_SDK_VERSION="v7.0"
     SET SET_SDK_64=Y
 ) ELSE (
-    IF %MAJOR_PYTHON_VERSION% == 3 (
+    IF %CONDA_VERSION% == 3 (
         SET WINDOWS_SDK_VERSION="v7.1"
-        IF %MINOR_PYTHON_VERSION% LEQ 4 (
-            SET SET_SDK_64=Y
-        ) ELSE (
-            SET SET_SDK_64=N
-        )
+        SET SET_SDK_64=N
     ) ELSE (
-        ECHO Unsupported Python version: "%MAJOR_PYTHON_VERSION%"
+        ECHO Unsupported Python version: "%CONDA_VERSION%"
         EXIT /B 1
     )
 )
 
 IF "%PLATFORM%"=="x64" (
     IF %SET_SDK_64% == Y (
-        ECHO Configuring Windows SDK %WINDOWS_SDK_VERSION% for Python %MAJOR_PYTHON_VERSION% on a 64 bit architecture
+        ECHO Configuring Windows SDK %WINDOWS_SDK_VERSION% for Python %CONDA_VERSION% on a 64 bit architecture
         SET DISTUTILS_USE_SDK=1
         SET MSSdk=1
         "%WIN_SDK_ROOT%\%WINDOWS_SDK_VERSION%\Setup\WindowsSdkVer.exe" -q -version:%WINDOWS_SDK_VERSION%
