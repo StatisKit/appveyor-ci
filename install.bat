@@ -22,6 +22,8 @@
 
 echo ON
 
+pip install six
+
 python configure.py
 if errorlevel 1 exit 1
 call configure.bat
