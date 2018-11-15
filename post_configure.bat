@@ -15,7 +15,7 @@ if errorlevel 1 exit 1
 call activate.bat
 if errorlevel 1 exit 1
 if not "%ANACONDA_CHANNELS%" == "" (
-  conda.exe config --add channels %ANACONDA_CHANNELS%
+  conda.exe config %ANACONDA_CHANNELS%
   if errorlevel 1 exit 1
 )
 conda.exe config --set always_yes yes
