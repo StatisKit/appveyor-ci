@@ -14,7 +14,7 @@ set PATH=%HOMEDRIVE%\Miniconda;%HOMEDRIVE%\Miniconda\Scripts;%PATH%
 if errorlevel 1 exit 1
 call activate.bat
 if errorlevel 1 exit 1
-if not "%ANACONDA_CHANNELS%"=="" (
+if not "%ANACONDA_CHANNELS%" == "" (
   conda.exe config --add channels %ANACONDA_CHANNELS%
   if errorlevel 1 exit 1
 )
