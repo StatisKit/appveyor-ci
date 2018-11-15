@@ -22,14 +22,14 @@
 
 echo ON
 
-if "%ANACONDA_DEPLOY%" == "true" (
+if "%ANACONDA_DEPLOY%" == "True" (
     if not "%CONDA_RECIPE%" == "" (
         for /f %%i in ('conda build %OLD_BUILD_STRING% --python=%PYTHON_VERSION% ..\%CONDA_RECIPE% --output') do anaconda upload %%i --user %ANACONDA_OWNER% %ANACONDA_FORCE% --label %ANACONDA_TMP_LABEL% --no-progress
         if errorlevel 1 exit 1
     )
 )
 
-if "%ANACONDA_RELEASE%" == "true" (
+if "%ANACONDA_RELEASE%" == "True" (
     if not "%ANACONDA_TMP_LABEL%" == "ANACONDA_LABEL" (
         anaconda label -o %ANACONDA_OWNER% --copy %ANACONDA_TMP_LABEL% %ANACONDA_LABEL%
         if errorlevel 1 exit 1

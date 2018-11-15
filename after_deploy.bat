@@ -22,7 +22,7 @@
 
 echo ON
 
-if "%ANACONDA_DEPLOY%" == "true" (
+if "%ANACONDA_DEPLOY%" == "True" (
     anaconda logout
     if errorlevel 1 exit 1
 )

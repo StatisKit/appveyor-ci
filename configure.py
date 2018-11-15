@@ -61,7 +61,7 @@ def get_anaconda_force():
     if environ["ANACONDA_LABEL"] == "release" and environ["APPVEYOR_REPO_BRANCH"] == "master":
         return "false"
     else:
-        return "true"
+        return "True"
 
 def get_test_level():
     if environ["CI"] == "True":
@@ -70,10 +70,10 @@ def get_test_level():
         return "3"
 
 def get_old_build_string():
-    if environ["ANACONDA_FORCE"] == "true":
-        return "true"
+    if environ["ANACONDA_FORCE"] == "True":
+        return "True"
     else:
-        return "false"    
+        return "False"    
 
 def get_anaconda_tmp_label():
     if environ["ANACONDA_LABEL"] == "release":
@@ -122,11 +122,11 @@ def main():
             environ["ANACONDA_LABEL"] = "cron"
         else:
             environ["ANACONDA_LABEL"] = "main"
-    if environ["ANACONDA_FORCE"] == "true":
+    if environ["ANACONDA_FORCE"] == "True":
         environ["ANACONDA_FORCE"] = "--force"
     else:
         environ["ANACONDA_FORCE"] = ""
-    if environ["OLD_BUILD_STRING"] == "true":
+    if environ["OLD_BUILD_STRING"] == "True":
         environ["OLD_BUILD_STRING"] = "--old-build-string"
     else:
         environ["OLD_BUILD_STRING"] = ""
