@@ -33,7 +33,7 @@ if not "%CONDA_BUILD_PIN%" == "" (
   conda.exe install conda-build
   if errorlevel 1 exit 1
 )
-s
+
 if "%CI%" == "True" (
   python release.py
   if errorlevel 1 exit 1
