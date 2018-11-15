@@ -43,7 +43,7 @@ def get_anaconda_deploy():
     return environ["CI"]
 
 def get_anaconda_release():
-    return "false"
+    return "False"
 
 def get_anaconda_label():
     if "APPVEYOR_SCHEDULED_BUILD" in environ and environ["APPVEYOR_SCHEDULED_BUILD"] == "True":
@@ -59,7 +59,7 @@ def get_python_version():
 
 def get_anaconda_force():
     if environ["ANACONDA_LABEL"] == "release" and environ["APPVEYOR_REPO_BRANCH"] == "master":
-        return "false"
+        return "False"
     else:
         return "True"
 

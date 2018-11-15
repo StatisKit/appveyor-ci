@@ -30,7 +30,7 @@ if "%ANACONDA_DEPLOY%" == "True" (
 )
 
 if "%ANACONDA_RELEASE%" == "True" (
-    if not "%ANACONDA_TMP_LABEL%" == "ANACONDA_LABEL" (
+    if not "%ANACONDA_TMP_LABEL%" == "%ANACONDA_LABEL%" (
         anaconda label -o %ANACONDA_OWNER% --copy %ANACONDA_TMP_LABEL% %ANACONDA_LABEL%
         if errorlevel 1 exit 1
     )
