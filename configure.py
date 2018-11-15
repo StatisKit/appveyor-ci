@@ -118,7 +118,7 @@ def main():
         if ANACONDA_CHANNEL:
             environ["ANACONDA_CHANNELS"] += " --add channels " + ANACONDA_CHANNEL
     if environ["ANACONDA_LABEL"] == "release":
-        if environ["TRAVIS_EVENT_TYPE"] == "cron":
+        if environ["APPVEYOR_SCHEDULED_BUILD"] == "True":
             environ["ANACONDA_LABEL"] = "cron"
         else:
             environ["ANACONDA_LABEL"] = "main"
