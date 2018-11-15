@@ -1,3 +1,5 @@
+echo ON
+
 git -C %APPVEYOR_BUILD_FOLDER% submodule update --init --recursive
 
 if "%CI%" == "True" rmdir /s /q C:\Miniconda
@@ -60,3 +62,5 @@ if not "%CONDA_PACKAGES%" == "" (
   call activate.bat py%CONDA_VERSION%
   if errorlevel 1 exit 1
 )
+
+echo OFF
