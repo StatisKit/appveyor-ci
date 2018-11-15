@@ -17,7 +17,7 @@ def get_python_version():
     return str(sys.version_info[0]) + "." + str(sys.version_info[1])
 
 def main():
-    if not environ['PYTHON_VERSION'].count('.') == 1:
+    if not environ['PYTHON_VERSION'].count('.') == 1 or environ['PYTHON_VERSION'].endswith('.x'):
         environ["PYTHON_VERSION"] = get_python_version()
     with open("python_version.bat", "w") as filehandler:
         filehandler.write("echo ON\n\n")
