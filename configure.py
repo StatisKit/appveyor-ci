@@ -1,5 +1,4 @@
 import os
-import platform
 import sys
 
 if sys.version_info[0] == 2:
