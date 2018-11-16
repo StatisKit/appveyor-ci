@@ -24,7 +24,9 @@ echo ON
 
 if "%ANACONDA_DEPLOY%" == "True" (
     if not "%CONDA_RECIPE%" == "" (
-        for /f %%i in ('conda build %OLD_BUILD_STRING% --python=%PYTHON_VERSION% ..\%CONDA_RECIPE% --output') do anaconda upload %%i --user %ANACONDA_OWNER% %ANACONDA_FORCE% --label %ANACONDA_TMP_LABEL% --no-progress
+        anaconda upload %ANACONDA_PACKAGES% --user %ANACONDA_OWNER% %ANACONDA_FORCE% --label %ANACONDA_TMP_LABEL% --no-progress
+        if errorlevel 1 exit 1
+        del /q /s %CONDA_PREFIX%\conda-bld
         if errorlevel 1 exit 1
     )
 )

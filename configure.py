@@ -23,10 +23,16 @@ def get_ci():
     return "False"
 
 def get_arch():
-    if sys.maxsize > 2**32:
-        return "x86_64"
+    if "PLATFORM" in environ:
+        if environ["PLATFORM"] == "x64":
+            return "x86_64"
+        else:
+            return "x86"
     else:
-        return "x86"
+        if sys.maxsize > 2**32:
+            return "x86_64"
+        else:
+            return "x86"
 
 def get_conda_version():
     if "PYTHON_VERSION" in environ:

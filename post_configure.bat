@@ -51,16 +51,15 @@ if errorlevel 1 exit 1
 set CMD_IN_ENV=cmd /E:ON /V:ON /C %cd%\\cmd_in_env.cmd
 if errorlevel 1 exit 1
 
-conda.exe create -n py%CONDA_VERSION%k python=%PYTHON_VERSION%
-if errorlevel 1 exit 1
-call activate.bat py%CONDA_VERSION%k
+conda.exe create -n appveyor-ci python=%PYTHON_VERSION%
 if errorlevel 1 exit 1
 
 if not "%CONDA_PACKAGES%" == "" (
-  conda.exe install  -n py%CONDA_VERSION% %CONDA_PACKAGES% --use-local
-  if errorlevel 1 exit 1
-  call activate.bat py%CONDA_VERSION%
+  conda.exe install  -n appveyor-ci %CONDA_PACKAGES% --use-local
   if errorlevel 1 exit 1
 )
+
+call activate.bat appveyor-ci
+if errorlevel 1 exit 1
 
 echo OFF
