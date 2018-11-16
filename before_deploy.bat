@@ -27,10 +27,12 @@ if "%ANACONDA_DEPLOY%" == "True" (
     if errorlevel 1 exit 1
     echo y|anaconda login --password %ANACONDA_PASSWORD% --username %ANACONDA_LOGIN%
     if errorlevel 1 exit 1
-    python anaconda_packages.py
-    if errorlevel 1 exit 1
-    call anaconda_packages.bat
-    if errorlevel 1 exit 1
+    if not "%CONDA_RECIPE%" == "" (
+        python anaconda_packages.py
+        if errorlevel 1 exit 1
+        call anaconda_packages.bat
+        if errorlevel 1 exit 1
+    )
 )
 
 echo OFF
