@@ -89,7 +89,9 @@ def get_conda_prefix():
 def get_conda_feature():
     if environ['ANACONDA_FORCE'] == "True":
         return "unstable"
-
+    else:
+        return "stable"
+        
 def main():
     for key in ["APPVEYOR_SCHEDULED_BUILD",
                 "APPVEYOR_REPO_BRANCH",
