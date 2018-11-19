@@ -75,10 +75,7 @@ def get_test_level():
         return "3"
 
 def get_old_build_string():
-    if environ["ANACONDA_FORCE"] == "True":
-        return "True"
-    else:
-        return "False"    
+    return "True"
 
 def get_anaconda_tmp_label():
     if environ["ANACONDA_LABEL"] == "release":
@@ -88,6 +85,10 @@ def get_anaconda_tmp_label():
 
 def get_conda_prefix():
     return "\%HOMEPATH\%\\miniconda"
+
+def get_conda_feature():
+    if environ['ANACONDA_FORCE'] == "True":
+        return "unstable"
 
 def main():
     for key in ["APPVEYOR_SCHEDULED_BUILD",
@@ -104,7 +105,9 @@ def main():
                 "ANACONDA_FORCE", 
                 "TEST_LEVEL",
                 "OLD_BUILD_STRING",
-                "ANACONDA_TMP_LABEL"]:
+                "ANACONDA_TMP_LABEL",
+                "CONDA_PREFIX",
+                "CONDA_FEATURE"]:
         if key not in environ:
             value = eval("get_" + key.lower() + "()")
             if value:

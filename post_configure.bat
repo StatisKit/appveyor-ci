@@ -38,6 +38,13 @@ if "%CI%" == "True" (
   python release.py
   if errorlevel 1 exit 1
 )
+if not "%CONDA_RECIPE%" == "" (
+  conda install yaml
+  if errorlevel 1 exit 1
+  python conda_feature.py
+  if errorlevel 1 exit 1
+)
+
 if not "%ANACONDA_CLIENT_PIN%" == "" (
     conda.exe install anaconda-client=$ANACONDA_CLIENT_PIN
     if errorlevel 1 exit 1
