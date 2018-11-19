@@ -36,7 +36,7 @@ def main():
             with open(CONDA_RECIPE, "w") as filehandler:
                 CONDA_META = yaml.dump(CONDA_META, filehandler, default_flow_style=False)
         else:
-            with open(CONDA_RECIPE, "wb") as filehandler:
+            with open(CONDA_RECIPE, "w") as filehandler:
                 CONDA_META = yaml.dump(CONDA_META, filehandler, default_flow_style=False)
 
 
