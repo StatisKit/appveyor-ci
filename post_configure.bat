@@ -39,7 +39,7 @@ if "%CI%" == "True" (
   if errorlevel 1 exit 1
 )
 if not "%CONDA_RECIPE%" == "" (
-  conda install yaml
+  conda install pyyaml
   if errorlevel 1 exit 1
   python conda_feature.py
   if errorlevel 1 exit 1
