@@ -18,10 +18,7 @@ else:
     environ = {key : value for key, value in os.environ.items() if value}
 
 def get_arch():
-    if sys.maxsize > 2**32:
-        return "x86_64"
-    else:
-        return "x86"
+    return "x86_64"
 
 def get_git_skip():
     return "false"
