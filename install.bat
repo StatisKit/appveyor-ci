@@ -75,7 +75,7 @@ if not "%ANACONDA_CLIENT_PIN%" == "" (
 anaconda.exe config --set auto_register yes
 if errorlevel 1 exit 1
 
-if "%ANACONDA_RELEASE%" == "true" (
+if "%ANACONDA_RELEASE%" == "True" (
     conda install requests
     python release.py
     if errorlevel 1 exit 1

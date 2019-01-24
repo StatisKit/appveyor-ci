@@ -93,8 +93,8 @@ If you want to:
     If not given, it is set to the :code:`ANACONDA_LOGIN` value.
   * :code:`ANACONDA_DEPLOY` (optional).
     Deployment into the **Anaconda Cloud**.
-    If set to :code:`true` (default if :code:`ANACONDA_LOGIN` is provided), the **Conda** recipe built will be deployed in the **Anaconda Cloud**.
-    If set to :code:`false` (default if :code:`ANACONDA_LOGIN` is not provided), the **Conda** recipe built will not be deployed in the **Anaconda Cloud**.
+    If set to :code:`True` (default if :code:`ANACONDA_LOGIN` is provided), the **Conda** recipe built will be deployed in the **Anaconda Cloud**.
+    If set to :code:`False` (default if :code:`ANACONDA_LOGIN` is not provided), the **Conda** recipe built will not be deployed in the **Anaconda Cloud**.
   * :code:`ANACONDA_LABEL` equal to :code:`main` by default.
     Label to associate to the **Conda** recipe deployed in the **Anaconda Cloud**.
     

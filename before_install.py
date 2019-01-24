@@ -49,16 +49,16 @@ def get_python_version():
     return environ["CONDA_VERSION"]
 
 def get_anaconda_force():
-    return "true"
+    return "True"
 
 def get_test_level():
-    if environ["CI"] == "true":
+    if environ["CI"] == "True":
         return "1"
     else:
         return "3"
 
 def get_old_build_string():
-    return "true"
+    return "True"
     
 def get_anaconda_tmp_label():
     if environ["ANACONDA_LABEL"] == "release":
@@ -70,7 +70,7 @@ def get_conda_prefix():
     return "%SYSTEMDRIVE%\\miniconda"
     
 def get_conda_feature():
-    if environ['ANACONDA_FORCE'] == "true":
+    if environ['ANACONDA_FORCE'] == "True":
         return "unstable"
     else:
         return "stable"
@@ -181,11 +181,11 @@ def main():
             environ["ANACONDA_CHANNELS"] += " --add channels " + ANACONDA_CHANNEL
     if environ["ANACONDA_LABEL"] == "release":
         environ["ANACONDA_LABEL"] = "main"
-    if environ["ANACONDA_FORCE"] == "true":
+    if environ["ANACONDA_FORCE"] == "True":
         environ["ANACONDA_FORCE"] = "--force"
     else:
         environ["ANACONDA_FORCE"] = ""
-    if environ["OLD_BUILD_STRING"] == "true":
+    if environ["OLD_BUILD_STRING"] == "True":
         environ["OLD_BUILD_STRING"] = "--old-build-string"
     else:
         environ["OLD_BUILD_STRING"] = ""

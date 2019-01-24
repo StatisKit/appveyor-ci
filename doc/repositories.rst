@@ -14,7 +14,7 @@ Within the **StatisKit** organization, there exits 2 types of deployment for rep
   
   .. warning:: 
   
-     These type of repositories must contain :code:`fast_finish: true` in the :code:`matrix` field.
+     These type of repositories must contain :code:`fast_finish: True` in the :code:`matrix` field.
      Otherwise, the last job moving the packages on the :code:`release` channel to the :code:`main` would be executed even if one job failed.
      
 * Repositories for continuous deployment (e.g., `ClangLite <http://github.com/StatisKit/ClangLite>`_).
