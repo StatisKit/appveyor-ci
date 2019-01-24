@@ -22,17 +22,17 @@
 
 echo OFF
 
-if "%ANACONDA_DEPLOY%" == "True" (
-    conda activate
+call environ.bat
+
+echo OFF
+
+call %CONDA_PREFIX%\Scripts\activate.bat 
+if errorlevel 1 exit 1
+
+if "%ANACONDA_DEPLOY%" == "true" (
+    echo y|anaconda.exe login --password %ANACONDA_PASSWORD% --username %ANACONDA_LOGIN%
     if errorlevel 1 exit 1
-    echo y|anaconda login --password %ANACONDA_PASSWORD% --username %ANACONDA_LOGIN%
-    if errorlevel 1 exit 1
-    if not "%CONDA_RECIPE%" == "" (
-        python anaconda_packages.py
-        if errorlevel 1 exit 1
-        call anaconda_packages.bat
-        if errorlevel 1 exit 1
-    )
 )
 
 echo OFF
+

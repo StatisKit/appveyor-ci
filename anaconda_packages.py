@@ -19,9 +19,17 @@ def main():
         CONDA_PREFIX += "32"
     else:
         CONDA_PREFIX += "64"
-    environ["ANACONDA_PACKAGES"] = " ".join(os.path.join(CONDA_PREFIX, package) for package in os.listdir(CONDA_PREFIX) if package.endswith(".tar.bz2"))
-    with open("anaconda_packages.bat", "w") as filehandler:
-        filehandler.write("echo ON\n\n")
+    if os.path.exists(CONDA_PREFIX):
+        environ["ANACONDA_SUCCESS_PACKAGES"] = " ".join(os.path.join(CONDA_PREFIX, package) for package in os.listdir(CONDA_PREFIX) if package.endswith(".tar.bz2"))
+    else:
+        environ["ANACONDA_SUCCESS_PACKAGES"] = ""
+    CONDA_PREFIX = os.path.join(os.path.abspath(environ["CONDA_PREFIX"]), 'conda-bld', "broken")
+    if os.path.exists(CONDA_PREFIX):
+        environ["ANACONDA_FAILURE_PACKAGES"] = " ".join(os.path.join(CONDA_PREFIX, package) for package in os.listdir(CONDA_PREFIX) if package.endswith(".tar.bz2"))
+    else:
+        environ["ANACONDA_FAILURE_PACKAGES"] = ""
+    with open("anaconda_packages.bat", "a+") as filehandler:
+        filehandler.write("\n")
         if PY2:
             for key, value in environ.iteritems():
                 if key not in os.environ or not os.environ[key] == environ[key]:
@@ -32,7 +40,7 @@ def main():
                 if key not in os.environ or not os.environ[key] == environ[key]:
                     filehandler.write("set " + key + "=" + value.strip() + "\n")
                     filehandler.write("if errorlevel 1 exit 1")
-        filehandler.write("\necho OFF")
+        filehandler.write("\n")
 
 if __name__ == "__main__":
     main()

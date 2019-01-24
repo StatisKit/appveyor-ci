@@ -19,12 +19,3 @@
 :: WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or       ::
 :: mplied. See the License for the specific language governing           ::
 :: permissions and limitations under the License.                        ::
-
-echo ON
-
-if not "%CI%" == "True" (
-    call %HOMEDRIVE%\Miniconda\Scripts\activate.bat
-    conda.exe env remove -n appveyor-ci
-)
-
-echo OFF

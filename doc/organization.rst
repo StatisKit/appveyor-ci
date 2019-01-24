@@ -43,4 +43,4 @@ For example, let us consider the :code:`config.bat` written for the **StatisKit*
 
       .. note::
 
-         In order to prevent **Anaconda** channel collision for the :code:`release` label on the :code:`statiskit` channel (e.g. with **AppVeyor CI**), the :code:`release` label is changed to :code:`travis-release`. 
+         In order to prevent **Anaconda** channel collision for the :code:`release` label on the :code:`statiskit` channel (e.g. with **AppVeyor CI**), the :code:`release` label is changed to :code:`appveyor-release`. 

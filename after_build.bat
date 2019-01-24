@@ -20,6 +20,16 @@
 :: mplied. See the License for the specific language governing           ::
 :: permissions and limitations under the License.                        ::
 
+echo OFF
+
+call environ.bat
+
 echo ON
+
+call %CONDA_PREFIX%\Scripts\activate.bat
+
+if "%CI%" == "false" (
+    conda.exe env remove -n appveyor-ci
+)
 
 echo OFF

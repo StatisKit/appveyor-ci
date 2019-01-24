@@ -20,18 +20,25 @@
 :: mplied. See the License for the specific language governing           ::
 :: permissions and limitations under the License.                        ::
 
+echo OFF
+
+call environ.bat
+
+call before_deploy.bat
+if errorlevel 1 exit 1
+
 echo ON
 
-if not "%ANACONDA_LOGIN%" == "" (
-  if not "%CONDA_RECIPE%" == "" (
-    call before_deploy.bat
-    if exist %CONDA_PREFIX%\conda-bld\broken (
-      for %%i in ("%CONDA_PREFIX%\conda-bld\broken\*.tar.bz2") do (
-        anaconda upload %%i -u %ANACONDA_OWNER% %ANACONDA_FORCE% --label broken
-      )
+if "%ANACONDA_DEPLOY%" == "true" (
+    if not "%ANACONDA_FAILURE_PACKAGES%" == "" (
+        anaconda.exe upload %ANACONDA_FAILURE_PACKAGES% --user %ANACONDA_OWNER% %ANACONDA_FORCE% --label broken --no-progress
+        if errorlevel 1 exit 1
+        del /q /s %ANACONDA_FAILURE_PACKAGES%
+        if errorlevel 1 exit 1
     )
-    call after_deploy.bat
-  )
 )
 
 echo OFF
+
+call after_deploy.bat
+if errorlevel 1 exit 1

@@ -20,22 +20,33 @@
 :: mplied. See the License for the specific language governing           ::
 :: permissions and limitations under the License.                        ::
 
+echo OFF
+
+call environ.bat
+
 echo ON
 
-if "%ANACONDA_DEPLOY%" == "True" (
+call %CONDA_PREFIX%\Scripts\activate.bat
+
+python anaconda_packages.py
+call anaconda_packages.bat
+del anaconda_packages.bat
+
+if "%ANACONDA_DEPLOY%" == "true" (
     if not "%CONDA_RECIPE%" == "" (
-        anaconda upload %ANACONDA_PACKAGES% --user %ANACONDA_OWNER% %ANACONDA_FORCE% --label %ANACONDA_TMP_LABEL% --no-progress
+        anaconda.exe upload %ANACONDA_SUCCESS_PACKAGES% --user %ANACONDA_OWNER% %ANACONDA_FORCE% --label %ANACONDA_TMP_LABEL% --no-progress
         if errorlevel 1 exit 1
-        del /q /s %CONDA_PREFIX%\conda-bld
+        del /q /s %ANACONDA_SUCCESS_PACKAGES%
         if errorlevel 1 exit 1
     )
 )
 
-if "%ANACONDA_RELEASE%" == "True" (
+if "%ANACONDA_RELEASE%" == "true" (
     if not "%ANACONDA_TMP_LABEL%" == "%ANACONDA_LABEL%" (
-        anaconda label -o %ANACONDA_OWNER% --copy %ANACONDA_TMP_LABEL% %ANACONDA_LABEL%
+        anaconda.exe label -o %ANACONDA_OWNER% --copy %ANACONDA_TMP_LABEL% %ANACONDA_LABEL%
         if errorlevel 1 exit 1
     )
 )
 
 echo OFF
+

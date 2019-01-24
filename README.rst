@@ -33,7 +33,7 @@ This collection of scripts for **AppVeyor CI** can be used with the following :c
 
     environment:
       matrix:
-        # Add here environement variables to control the Travis CI build
+        # Add here environement variables to control the AppVeyor CI build
 
     install:
       - git clone https://github.com/StatisKit/appveyor-ci.git appveyor-ci
@@ -108,5 +108,5 @@ If you want to:
     
 .. note::
 
-   It is recommanded to define the environment variables :code:`ANACONDA_LOGIN` (resp. :code:`DOCKER_LOGIN`), :code:`ANACONDA_PASSWORD` (resp. :code:`DOCKER_PASSWORD`) and :code:`ANACONDA_OWNER` (resp. :code:`DOCKER_OWNER`) in the :code:`Settings` pannel of **Travis CI** instead of in the :code:`.travis.yml`.
+   It is recommanded to define the environment variables :code:`ANACONDA_LOGIN` (resp. :code:`DOCKER_LOGIN`), :code:`ANACONDA_PASSWORD` (resp. :code:`DOCKER_PASSWORD`) and :code:`ANACONDA_OWNER` (resp. :code:`DOCKER_OWNER`) in the :code:`Settings` pannel of **Travis CI** instead of in the :code:`appveyor.yml`.
  

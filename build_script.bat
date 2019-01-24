@@ -20,16 +20,30 @@
 :: mplied. See the License for the specific language governing           ::
 :: permissions and limitations under the License.                        ::
 
+echo OFF
+
+call environ.bat
+
 echo ON
 
+call %CONDA_PREFIX%\Scripts\activate.bat appveyor-ci
+if errorlevel 1 exit 1
+python python_version.py
+if errorlevel 1 exit 1
+call python_version.bat
+if errorlevel 1 exit 1
+
+echo %PATH%
+
 if not "%CONDA_RECIPE%" == "" (
-  %CMD_IN_ENV% conda build %OLD_BUILD_STRING% --python=%PYTHON_VERSION% ..\%CONDA_RECIPE%
+  %CMD_IN_ENV% conda.exe build %OLD_BUILD_STRING% --python=%PYTHON_VERSION% %CONDA_RECIPE%
   if errorlevel 1 exit 1
 )
 
 if not "%JUPYTER_NOTEBOOK%" == "" (
-  jupyter nbconvert --ExecutePreprocessor.kernel_name=%JUPYTER_KERNEL% --ExecutePreprocessor.timeout=0 --to notebook --execute --inplace ..\%JUPYTER_NOTEBOOK%
+  jupyter nbconvert --ExecutePreprocessor.kernel_name=%JUPYTER_KERNEL% --ExecutePreprocessor.timeout=0 --to notebook --execute --inplace %JUPYTER_NOTEBOOK%
   if errorlevel 1 exit 1
 )
 
 echo OFF
+

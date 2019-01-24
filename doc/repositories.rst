@@ -1,7 +1,7 @@
 Repositories Guide
 ------------------
 
-To activate **Travis CI** for a **GitHub** repository, refers to this `page <https://help.github.com/enterprise/2.11/admin/guides/developer-workflow/continuous-integration-using-travis-ci/>`_.
+To activate **AppVeyor CI** for a **GitHub** repository, refers to this `page <https://help.github.com/enterprise/2.11/admin/guides/developer-workflow/continuous-integration-using-appveyor-ci/>`_.
 
 Within the **StatisKit** organization, there exits 2 types of deployment for repositories:
 

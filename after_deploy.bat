@@ -20,10 +20,17 @@
 :: mplied. See the License for the specific language governing           ::
 :: permissions and limitations under the License.                        ::
 
+echo OFF
+
+call environ.bat
+
 echo ON
 
-if "%ANACONDA_DEPLOY%" == "True" (
-    anaconda logout
+call %CONDA_PREFIX%\Scripts\activate.bat
+if errorlevel 1 exit 1
+
+if "%ANACONDA_DEPLOY%" == "true" (
+    anaconda.exe logout
     if errorlevel 1 exit 1
 )
 
