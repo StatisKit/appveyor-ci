@@ -31,7 +31,6 @@ if errorlevel 1 exit 1
 
 if "%ANACONDA_DEPLOY%" == "True" (
     echo y|anaconda.exe login --password %ANACONDA_PASSWORD% --username %ANACONDA_LOGIN%
-    if errorlevel 1 exit 1
 )
 
 echo OFF
