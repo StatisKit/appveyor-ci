@@ -28,7 +28,7 @@ echo ON
 
 call %CONDA_PREFIX%\Scripts\activate.bat
 
-if "%CI%" == "false" (
+if "%CI%" == "False" (
     conda.exe env remove -n appveyor-ci
 )
 

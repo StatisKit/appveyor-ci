@@ -21,7 +21,7 @@ def get_arch():
     return "x86_64"
 
 def get_git_skip():
-    return "false"
+    return "False"
 
 def get_conda_version():
     if "PYTHON_VERSION" in environ:
@@ -37,7 +37,7 @@ def get_anaconda_deploy():
     return environ["CI"]
 
 def get_anaconda_release():
-    return "false"
+    return "False"
 
 def get_anaconda_label():
     return "main"
