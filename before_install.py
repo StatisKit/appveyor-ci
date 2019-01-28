@@ -98,15 +98,13 @@ def set_git_describe_number():
             output = subprocess.check_output(['git', '-C', '..', 'describe', '--tags'], stderr=DEVNULL).splitlines()[0].split('-')
         else:
             output = subprocess.check_output(['git', '-C', '..', 'describe', '--tags'], stderr=DEVNULL).splitlines()[0].decode().split('-')
-        print(output)
         if len(output) == 4:
             return output[2]
         elif len(output) == 3:
             return output[1]
         else:
             raise ValueError()
-    except Exception as e:
-        print(e)
+    except:
         try:
             if PY2:
                 return subprocess.check_output(['git', '-C', '..', 'rev-list', 'HEAD', '--count']).splitlines()[0]
