@@ -6,15 +6,14 @@ import subprocess
 import datetime
 
 if sys.version_info[0] == 2:
+    DEVNULL = open(os.devnull, 'wb')
     PY2 = True
     PY3 = False
-else:
-    PY3 = True
-    PY2 = False
-
-if PY2:
     environ = {key : value for key, value in os.environ.iteritems() if value}
 else:
+    from subprocess import DEVNULL
+    PY3 = True
+    PY2 = False
     environ = {key : value for key, value in os.environ.items() if value}
 
 def get_arch():
