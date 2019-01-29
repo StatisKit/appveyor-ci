@@ -16,6 +16,15 @@ else:
     PY2 = False
     environ = {key : value for key, value in os.environ.items() if value}
 
+def get_repo_appveyor_banch():
+    try:
+        if PY2:
+            return subprocess.check_output(['git', 'rev-parse', '--abbrev-ref', 'HEAD']).splitlines()[0]
+        else:
+            return subprocess.check_output(['git', 'rev-parse', '--abbrev-ref', 'HEAD']).splitlines()[0].decode()
+    except:
+        return "master"
+
 def get_arch():
     return "x86_64"
 
@@ -39,7 +48,10 @@ def get_anaconda_release():
     return "False"
 
 def get_anaconda_label():
-    return "main"
+    if environ['APPVEYOR_REPO_BRANCH'] == 'master':
+        return "main"
+    else:
+        return environ['APPVEYOR_REPO_BRANCH'].replace('/', '-').replace('\\', '-')
 
 def get_jupyter_kernel():
     return "python" + environ["CONDA_VERSION"]
@@ -143,7 +155,8 @@ def set_jupyter_notebook():
         return ("../" + environ["JUPYTER_NOTEBOOK"]).replace("/", os.sep)
 
 def main():
-    for key in ["ARCH",
+    for key in ["APPVEYOR_REPO_BRANCH",
+                "ARCH",
                 "CONDA_VERSION",
                 "ANACONDA_LABEL",
                 "ANACONDA_OWNER",
