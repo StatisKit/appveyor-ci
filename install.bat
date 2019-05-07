@@ -26,8 +26,6 @@ call environ.bat
 
 echo ON
 
-set CONDA_BUILD_PIN=3.15
-
 git -C %APPVEYOR_BUILD_FOLDER% submodule update --init --recursive
 
 if "%CI%" == "True" rmdir /s /q C:\Miniconda
